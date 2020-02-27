@@ -1,0 +1,59 @@
+<!-- BEGIN: Subheader -->
+<div class="m-subheader" appunwraptag="">
+  <div class="d-flex align-items-center">
+    <div class="mr-auto">
+      <h5 class="m-subheader__title m-subheader__title--separator">Our Contact</h5>				
+    </div>
+  </div>
+</div>
+
+<!-- END: Subheader -->
+<div class="m-content">
+  <div class="m-portlet m-portlet--mobile">
+    <div class="m-portlet__head">
+      <div class="m-portlet__head-caption">
+        <div class="m-portlet__head-title">
+          <h5 class="m-portlet__head-text">Manage Our Contact</h5> 
+        </div>
+      </div>			  
+    </div>
+
+    <div class="m-portlet__body">
+      <ng-template #alertProduct></ng-template>
+      <!--begin: Datatable -->
+      <table class="">
+        <thead>
+          <tr>
+            <th>Contact Person Name</th>
+            <th> Email</th>
+            <th> Message</th>
+
+            <!-- <th>Action</th> -->
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let contact of contactData;">
+            <td>
+              {{contact.name}}
+            </td>
+            <td>
+              {{contact.email}}
+            </td>
+            <td>
+              {{contact.message}}
+            </td>
+            <!-- <td>
+              <a [routerLink]="['/brewery/edit-our-process/',(process?.id)]" class="btn btn-primary btn-sm">Update</a>
+              <a (click)="deleteProcess(process?.id)" class="btn btn-primary btn-sm">Delete</a>
+            </td>  -->
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+  <!-- END EXAMPLE TABLE PORTLET-->
+
+  <!--Pagination -->
+  <app-pagination *ngIf="totalItems" [pagination_limit]="pagination_limit" [totalItems]="totalItems" [currentPage]="currentPage" (childEvent)="listProducts ($event)"></app-pagination>
+</div>

@@ -1,0 +1,207 @@
+<!-- BEGIN: Subheader -->
+<div class="m-subheader" appunwraptag="">
+	<div class="d-flex align-items-center">
+		<div class="mr-auto">
+			<h3 class="m-subheader__title m-subheader__title--separator">ACCOUNT</h3>		
+		</div>		
+	</div>
+</div>
+
+<!-- END: Subheader -->
+<div class="m-content">
+	<div class="m-portlet m-portlet--full-height">
+		<div class="m-portlet__head">
+			<div class="m-portlet__head-caption">
+				<div class="m-portlet__head-title">
+					<h3 class="m-portlet__head-text font-weight-bold">EDIT BREWERY</h3> 
+				</div>
+			</div>			
+		</div>
+		<div class="m-portlet__body">
+			<ng-template #alertAssociateInvitation></ng-template>
+			<div class="m-section__sub font-weight-bold pt-4">Email: <span class="text-danger">*</span></div>
+			<input class="email input_type" type="text" placeholder="" [value]="breweryDetail?.profile?.supportEmail" />
+			
+			<div class="m-section__sub font-weight-bold pt-4">URL: <span class="text-danger">*</span></div>
+			<input class="email input_type" type="text" placeholder="" [value]="breweryDetail?.subdomain" />							
+			
+			<div class="m-portlet__head-title">
+				<h6 class="font-weight-bold  pt-4 mt-4">Address</h6>
+				<div class="row  pt-2">
+					<div class="col-md-2">
+						<p class="font-weight-normal my-0">{{ breweryDetail?.address.premisis }}</p>
+						<p class="font-weight-normal my-0">{{ breweryDetail?.address.city }}</p>
+						<p class="font-weight-normal my-0">{{ breweryDetail?.address.postCode }}</p>
+					</div>
+					<div class="col-md-10 align-left pt-2">
+						<button pButton type="button" class="ui-button-warning btn btn-warning border">Change</button>
+					</div>
+				</div>
+			</div>
+				
+			<div class="m-portlet__head-title pt-4">
+				<h5 class="font-weight-normal my-0">Associate Accounts</h5>
+				<p class="font-weight-normal my-0"><small>The below emails will have access to the brewery admin panel.</small></p>
+				<div class="pt-4">
+					<table class="table_email">
+						<thead class="th_bg">
+							<tr>
+								<th class="tr_edit_brew">Email</th>
+								<th class="tr_edit_brew">Actions</th>
+							</tr>												
+						</thead>
+						<tbody>
+							<tr *ngFor="let manager of breweryManagers?.managers">
+								<td class="td_edit_brew">{{ manager?.user?.email }}</td>
+								<td class="td_edit_brew font-weight-bold">
+									<span class="text-danger cursor-pointer" *ngIf="!manager?.admin">Remove</span>
+								</td>
+							</tr>
+							<tr *ngFor="let manager of breweryManagers?.invitation">
+								<td class="td_edit_brew">{{ manager?.email }}</td>
+								<td class="td_edit_brew font-weight-bold">
+									<span class="text-warning mr-2 cursor-pointer" (click)="sendInvitation(manager?.email)">Resend</span>
+									<span class="text-danger cursor-pointer" (click)="removeInvitation (manager?.email)">Remove</span>
+								</td>
+							</tr>
+						 <tr>
+								<td colspan="2" class="td_add_row text-center td_edit_brew text-uppercase cursor-pointer" data-toggle="modal" data-target="#m_modal_5">
+									<i class="fa">&#xf055;</i> ADD ROW
+								</td>
+							</tr> 
+							<!-- <tr>
+								 <td class="td_add_row"></td>
+								<td colspan="2" class="text-center td_edit_brew text-uppercase cursor-pointer" data-toggle="modal" data-target="#m_modal_5" href="javascript:;"><i class="fa">&#xf055;</i> ADD ROW</td>
+								<td class="td_add_row"></td>
+								
+							</tr> -->
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+		<div class="m-portlet__body  border border-top-2"> 
+			<div class="m-portlet__head-caption">
+				<div class="m-portlet__head-title">
+					<h6 class="font-weight-light"><span class="text-danger">*</span>indicates required</h6>
+				</div>
+			</div>
+			<div class="m-section__content"> 
+				<button pButton type="button" class="ui-button-warning btn btn-warning border">Save</button>
+				<button pButton type="button" class="btn ml-4">Cancel</button>
+			</div> 
+		</div>
+	</div>
+</div>
+
+<!-- Change password Code -->
+<div class="m-content margn_top">
+	<div class="m-portlet m-portlet--full-height">
+		<div class="m-portlet__head">
+			<div class="m-portlet__head-caption">
+				<div class="m-portlet__head-title">
+					<h3 class="m-portlet__head-text">Password</h3> 
+				</div>
+			</div>			
+		</div>
+		<div class="m-portlet__body">
+			<P class="font-weight-bold">Change your password</P>
+		</div>
+		
+		<div class="m-portlet__body border border-top-2">			
+			<div class="m-section__content"> 
+				<button pButton type="button" routerLink="/profile/edit/input" class="ui-button-warning btn btn-warning border">Change Password</button>
+			</div> 
+		</div>		
+	</div>
+</div>
+<!-- Ends here -->
+
+<!-- Request Data -->
+<div class="m-content margn_top">
+	<div class="m-portlet m-portlet--full-height">
+		<div class="m-portlet__head">
+			<div class="m-portlet__head-caption">
+				<div class="m-portlet__head-title">
+					<h3 class="m-portlet__head-text">Request Data</h3> 
+				</div>
+			</div>				
+		</div>
+		<div class="m-portlet__body">
+			<P class="font-weight-normal text-muted">Download a CSV file containing all of the personal data that we store for your profile</P>
+		</div>			
+		<div class="m-portlet__body border border-top-2">		
+			<div class="m-section__content"> 
+				<button pButton type="button" class="ui-button-warning btn btn-warning border">Request</button>
+			</div> 
+		</div>			
+	</div>
+</div>
+
+<!-- Ends here -->
+<!-- Delete Account -->
+<div class="m-content margn_top" *ngIf="displayDeleteAccount()">
+	<div class="m-portlet m-portlet--full-height">
+		<div class="m-portlet__head">
+			<div class="m-portlet__head-caption">
+				<div class="m-portlet__head-title">
+					<h3 class="m-portlet__head-text">Delete Account</h3> 
+				</div>
+			</div>
+		</div>
+		<div class="m-portlet__body">
+			<P class="font-weight-normal text-muted">
+				By deleting your account all associated data held by us will be deleted and your account will be terminated. you will be terminated. you will be no longer have access to the FFTB platform. If you wish you delete your account, 
+				<a *ngIf="dosplayByRole('brewery')" class="text-warning ml-2" routerLink="/brewery/remove">click here</a>
+				<a *ngIf="dosplayByRole('admin')" class="text-warning ml-2" data-toggle="modal" data-target="#deleteBreweryModal">click here</a>
+			</P>
+		</div>
+	</div>
+</div>
+<!-- Ends here -->
+
+
+
+<!--begin::Modal--> 
+<div class="modal fade" id="m_modal_5" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-sm" role="document">     
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Invite Brewery</h5>
+			</div>
+			<form (ngSubmit)="f.form.valid && completeRegistration()" #f="ngForm" id="new_associate_form">
+				<div class="modal-body">			
+					<div class="form-group">
+						<label for="recipient-name" class="form-control-label">Brewery Email:</label>
+						<input type="text" class="form-control" id="recipient-name" name="email" [(ngModel)]="model.email" #email="ngModel" autocomplete="off" maxlength="255">
+					</div>
+				</div>
+				<div class="modal-footer text-left">
+					<button type="button" (click)="submitAssociateAccount ()" class="ui-button-warning btn btn-warning border">Invite</button>
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div> <!--end::Modal-->
+
+<!-- Modal -->
+<div class="modal fade" id="deleteBreweryModal" tabindex="-1" role="dialog" aria-labelledby="deleteBreweryModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+		<div class="modal-header">
+			<h5 class="modal-title" id="deleteBreweryModalLabel">Delete Brewery</h5>
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+		<div class="modal-body">
+			Do you really want to delete this Brewery? you won't be able to undo it.
+		</div>
+		<div class="modal-footer">
+			<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+			<button type="button" class="btn btn-warning" data-dismiss="modal" (click)="deleteBrewery()">Delete</button>
+		</div>
+		</div>
+	</div>
+</div>

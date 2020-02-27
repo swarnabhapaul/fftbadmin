@@ -1,0 +1,29 @@
+.brewery-logo {
+    max-width: 2rem !important;
+}
+
+.product-logo {
+    max-width: 4rem;
+}
+
+.red{
+    color:#b70000;
+}
+
+.green{
+    color:#218213;
+}
+.yellow{
+    color:#004cff;
+}
+/* .alert.bg{ 
+    background-color: transparent;
+} */
+
+.hide{
+    display: none;
+}
+
+.show{
+    display: block;
+}

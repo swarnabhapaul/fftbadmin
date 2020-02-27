@@ -1,0 +1,29 @@
+
+.hide{
+    display: none;
+}
+.show{
+    display: block;
+}
+.w3_container{
+    background: #FFF;
+    border-radius: 4px;
+    padding: 25px;
+}
+.w3_container .row > [class^="col-"]:not(:last-child)::after{
+    position: absolute;
+    top: 0;
+    right: 30px;
+    content: "";
+    display: block;
+    width: 1px;
+    height: 100%;
+    background: #ccc;
+}
+.modal_container li{
+    list-style: disc;
+}
+.modal_container li p{
+    color: #212529;
+    font-size: 14px;
+}

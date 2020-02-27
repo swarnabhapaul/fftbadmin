@@ -1,0 +1,72 @@
+
+<!-- END: Subheader -->
+<div class="m-content">
+	<div class="m-portlet m-portlet--full-height">
+		<div class="m-portlet__head">
+			<div class="m-portlet__head-caption">
+				<div class="m-portlet__head-title">
+					<h3 class="m-portlet__head-text font-weight-bold">Add Brewery</h3> 
+				</div>
+			</div>			
+		</div>
+		<form class="m-profile__form m-form" action="" (ngSubmit)="f.form.valid && addBrewery()" #f="ngForm">
+			<ng-template #alertProduct></ng-template>
+
+			<div class="m-portlet__body">
+
+				<div class="m-section__sub font-weight-bold pt-4">
+					Brewery Name: <span class="text-danger">*</span>
+				</div>
+				<input class="pname input_type" placeholder="Brewery Name" maxlength="100" autocomplete="off" name="name" [(ngModel)]="model.name" #name="ngModel" />
+				
+				<div class="m-section__sub font-weight-bold pt-4">
+					Brewery Email: <span class="text-danger">*</span>
+				</div>
+				<input class="pname input_type" placeholder="Brewery Email" maxlength="100" autocomplete="off" name="email" [(ngModel)]="model.email" #name="ngModel" />
+
+				<div class="m-section__sub font-weight-bold pt-4">
+					Brewery Password: <span class="text-danger">*</span>
+				</div>
+				<input class="pname input_type" placeholder="Brewery Password" maxlength="100" autocomplete="off" name="password" [(ngModel)]="model.password" #name="ngModel" />
+
+				<div class="m-section__sub font-weight-bold pt-4">
+					Vat: <span class="text-danger">*</span>
+				</div>
+				<input class="pname input_type" placeholder="vat" maxlength="100" autocomplete="off" name="vat" [(ngModel)]="model.vat" #name="ngModel" />
+
+				<div class="m-section__sub font-weight-bold pt-4">
+					Company: <span class="text-danger">*</span>
+				</div>
+				<input class="pname input_type" placeholder="Company" maxlength="100" autocomplete="off" name="company" [(ngModel)]="model.company" #name="ngModel" />
+
+				<div class="m-section__sub font-weight-bold pt-4">
+					Premisis: <span class="text-danger">*</span>
+				</div>
+				<input class="pname input_type" placeholder="premisis" maxlength="100" autocomplete="off" name="premisis" [(ngModel)]="model.premisis" #name="ngModel" />
+
+				<div class="m-section__sub font-weight-bold pt-4">
+					City: <span class="text-danger">*</span>
+				</div>
+				<input class="pname input_type" placeholder="City" maxlength="100" autocomplete="off" name="city" [(ngModel)]="model.city" #name="ngModel" />
+
+				<div class="m-section__sub font-weight-bold pt-4">
+					Post Code: <span class="text-danger">*</span>
+				</div>
+				<input class="pname input_type" placeholder="Post Code" maxlength="100" autocomplete="off" name="postCode" [(ngModel)]="model.postCode" #name="ngModel" />
+
+			</div>
+			
+			<div class="m-portlet__body  border border-top-2">
+				<div class="m-portlet__head-caption">
+					<div class="m-portlet__head-title">
+						<h6 class="font-weight-light"><span class="text-danger">*</span>indicates required</h6>
+					</div>				
+				</div>
+				<div class="m-section__content">
+					<button [disabled]="loading" [ngClass]="{'m-loader m-loader--right m-loader--light': loading}" id="m_button_product_submit" class="btn btn-focus m-btn m-btn--custom m-btn--air bg-warning text-dark border border-warning">Save</button>
+					<button pButton type="button" class="btn ml-4">Cancel</button>
+				</div>
+			 </div>
+		</form>
+	</div>
+</div>

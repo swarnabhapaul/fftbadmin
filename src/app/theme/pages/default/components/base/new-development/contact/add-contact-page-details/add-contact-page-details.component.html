@@ -1,0 +1,147 @@
+
+<div class="m-content">
+	<div class="row">
+		<div class="col-xl-12">
+			<!--begin::Portlet-->
+			<div class="m-portlet">
+				<div class="m-portlet__head">
+					<div class="m-portlet__head-caption">
+						<div class="m-portlet__head-title">
+							<h3 class="m-portlet__head-text">Manage Contact CMS</h3> 
+						</div>
+					</div>
+				</div>
+				<form class="m-login__form m-form"  [formGroup]="contactForm" (ngSubmit)="onSubmit(contactForm.value)" method="post">
+
+					<div class="m-portlet__body">
+						
+
+						<!-- upload image -->
+						<ng-template #alertImage></ng-template>
+						<div class="m-portlet__head-title">
+							<h6 class="font-weight-bold  pt-4 mt-4">Contact Map Over Image</h6>
+							<div class="row  pt-2">
+								<div class="col-md-2" *ngIf="blogLogo">
+									<img [src]="blogLogo" height="80px" width="80px">
+								</div>
+								<div class="col-md-10 align-left pt-2">
+									<div class="media-body margin_image">
+										<div class="text-capitalize mt-4">Upload New Image</div>
+										<label class="btn-bs-file btn btn-warning mt-2">
+											Upload
+											<input 
+											type="file" 
+											(change)="uploadImg ($event)"/>
+										</label>
+									</div>										
+								</div>
+							</div>
+						</div>
+						<div style="color: crimson;">
+							<div>Process Image 400 * 300 px</div>
+						</div>
+
+						<div class="m-section__sub font-weight-bold pt-4">Contact Content: </div>
+						<textarea 
+						id="my-summernote" 
+						formControlName="content" 
+						placeholder="Compose an epic..."
+						></textarea>
+
+						<div class="m-section__sub font-weight-bold pt-4">Contact Address: </div>
+						<textarea  
+						formControlName="address" 
+						rows="4" 
+						cols="50"
+						>{{conaddress}}</textarea>
+
+						<div class="m-section__sub font-weight-bold pt-4">Contact iframe: </div>
+						<textarea  
+						formControlName="iframe" 
+						rows="4" 
+						cols="50"
+						>{{coniframe}}</textarea>
+
+						<div class="m-section__sub font-weight-bold pt-4">Contact Email: </div>
+						<input 
+						type="text" 
+						formControlName="email" 
+						class="input_type" 
+						>
+
+						<div class="m-section__sub font-weight-bold pt-4">Contact Phone: </div>
+						<input 
+						type="text" 
+						name="phone"
+						ngModel
+						[(ngModel)]="model.phone"
+						formControlName="phone" 
+						class="input_type" 
+						>
+
+						<div class="m-section__sub font-weight-bold pt-4">Contact Time: </div>
+						<input 
+						type="text" 
+						formControlName="time" 
+						class="input_type"
+						>
+
+ 
+						<div class="m-section__sub font-weight-bold pt-4">Facebook Link: </div>
+						<input 
+						type="text" 
+						formControlName="facebook_link" 
+						class="input_type" 
+						>
+						<div class="m-section__sub font-weight-bold pt-4">Instagram Link: </div>
+						<input 
+						type="text" 
+						formControlName="instagram_link" 
+						class="input_type" 
+						>
+						<div class="m-section__sub font-weight-bold pt-4">Twitter Link: </div>
+						<input 
+						type="text" 
+						formControlName="twitter_link" 
+						class="input_type"
+						>
+						<div class="m-section__sub font-weight-bold pt-4">Pinterest Link: </div>
+						<input 
+						type="text" 
+						formControlName="pinterest_link" 
+						class="input_type" 
+						>
+
+						<div class="m-section__sub font-weight-bold pt-4">Footer About: </div>
+						<textarea  
+						formControlName="footer_about" 
+						id="footer_about"
+						rows="4" 
+						cols="50"
+						>{{footer_about}}</textarea>
+
+						<input
+						type="hidden"
+						formControlName="editid"
+						/>
+					</div>
+					<div class="m-portlet__body  border border-top-2">
+						<div class="m-section__content"> 
+							<button [disabled]="!contactForm.valid" type="submit" class="btn ml-4 btn-light border">{{conButton}}</button>
+							<button pButton type="button" class="btn ml-4 btn-light border">Cancel</button>
+						</div>
+					</div>
+				</form>
+			</div>
+			<!--end::Portlet-->
+
+			<div class="alert alert-{{flag}}" role="alert" *ngIf="message">
+					{{message}}
+			</div>
+		</div>
+		
+
+		
+		
+	</div>	
+</div>

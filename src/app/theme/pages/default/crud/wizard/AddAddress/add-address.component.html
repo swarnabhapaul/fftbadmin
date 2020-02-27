@@ -1,0 +1,61 @@
+<div class="m-content">
+    <div class="m-portlet m-portlet--full-height">
+        <div class="m-portlet__head">
+            <div class="m-portlet__head-caption">
+                <div class="m-portlet__head-title">
+                    <h3 class="m-portlet__head-text font-weight-bold">New Address</h3>
+                </div>
+            </div>
+        </div>
+        <form class="m-profile__form m-form" action="" (ngSubmit)="submitAddress(f)" #f="ngForm">
+            <div class="m-portlet__body">
+
+                <div class="m-section__sub font-weight-bold pt-4">
+                    Address Type: <span class="text-danger">*</span>
+                </div>
+                <select class="rstock input_type" name="addressTypeof" [(ngModel)]="addressTypeof">
+                    <option value="{{list.id}}" *ngFor="let list of addressType">{{list.name}}</option>
+                </select>
+
+
+                <div class="m-section__sub font-weight-bold pt-4">
+                    Pemisis: <span class="text-danger">*</span>
+                </div>
+                <input class="pname input_type" placeholder="premisis" maxlength="100" autocomplete="off"
+                    name="premisis" [(ngModel)]="premisis" #name="ngModel" />
+
+                <div class="m-section__sub font-weight-bold pt-4">
+                    City: <span class="text-danger">*</span>
+                </div>
+                <input class="pname input_type" placeholder="city" maxlength="10" autocomplete="off" name="city"
+                    [(ngModel)]="city" #price="ngModel">
+
+                <div class="m-section__sub font-weight-bold pt-4">
+                    Post_code: <span class="text-danger">*</span>
+                </div>
+                <input class="pname input_type" placeholder="post_code" maxlength="10" autocomplete="off"
+                    name="post_code" [(ngModel)]="post_code" #price="ngModel">
+
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="defaultUnchecked">
+                    <label class="custom-control-label" for="defaultUnchecked">Only Shipping</label>
+                </div>
+
+            </div>
+
+            <div class="m-portlet__body  border border-top-2">
+                <div class="m-portlet__head-caption">
+                    <div class="m-portlet__head-title">
+                        <h6 class="font-weight-light"><span class="text-danger">*</span>indicates required</h6>
+                    </div>
+                </div>
+                <div class="m-section__content">
+                    <button [disabled]="loading" [ngClass]="{'m-loader m-loader--right m-loader--light': loading}"
+                        id="m_button_product_submit"
+                        class="btn btn-focus m-btn m-btn--custom m-btn--air bg-warning text-dark border border-warning">Save</button>
+                    <button pButton type="button" class="btn ml-4">Cancel</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

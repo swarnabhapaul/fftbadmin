@@ -1,0 +1,99 @@
+<div class="m-content">
+    <div class="row">
+        <div class="col-xl-12">
+            <!--begin::Portlet-->
+            <div class="m-portlet">
+                <div class="m-portlet__head">
+                    <div class="m-portlet__head-caption">
+                        <div class="m-portlet__head-title">
+                            <h3 class="m-portlet__head-text">Edit Home Third Section</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <form (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" class="m-login__form m-form" method="post">
+                    <div class="m-portlet__body">
+                        <div class="m-section__sub font-weight-bold pt-4"> Title: <span class="text-danger">*</span>
+                        </div>
+                        <input type="text" class="input_type" required name="title" [(ngModel)]="model.title"
+                            #title="ngModel">
+
+                        <div class="m-section__sub font-weight-bold pt-4">Short Title: <span
+                                class="text-danger">*</span></div>
+                        <input type="text" class="input_type" required name="short_title"
+                            [(ngModel)]="model.short_title" #story_title="ngModel">
+
+                        <!-- upload image -->
+                        <ng-template #alertImage2></ng-template>
+                        <div class="m-portlet__head-title">
+                            <h6 class="font-weight-bold  pt-4 mt-4">Upload Frist Image</h6>
+                            <div class="row  pt-2">
+                                <div class="col-md-2" *ngIf="_fristImage">
+                                    <img [src]="_fristImage" height="80px" width="80px">
+                                </div>
+                                <div class="col-md-10 align-left pt-2">
+                                    <div class="media-body margin_image">
+                                        <div class="text-capitalize mt-4">Upload Big Image</div>
+                                        <label class="btn-bs-file btn btn-warning mt-2">
+                                            Upload
+                                            <input type="file" (change)="uploadBigImg ($event)" />
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="color: crimson;">
+                            <div>Frist Image 290 * 390 px</div>
+                        </div>
+
+
+                        <!-- upload image -->
+                        <ng-template #alertImage></ng-template>
+                        <div class="m-portlet__head-title">
+                            <h6 class="font-weight-bold  pt-4 mt-4">Upload Second Image</h6>
+                            <div class="row  pt-2">
+                                <div class="col-md-2" *ngIf="_secImage">
+                                    <img [src]="_secImage" height="80px" width="80px">
+                                </div>
+                                <div class="col-md-10 align-left pt-2">
+                                    <div class="media-body margin_image">
+                                        <div class="text-capitalize mt-4">Upload Image</div>
+                                        <label class="btn-bs-file btn btn-warning mt-2">
+                                            Upload
+                                            <input type="file" (change)="uploadSmallImg ($event)" />
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="color: rgb(240, 15, 15);">
+                            <div>Second Image 150 * 380 px</div>
+                        </div>
+
+
+                        <div class="m-section__sub font-weight-bold pt-4">Description: </div>
+                        <textarea id="my-description" name="description" [(ngModel)]="model.description"
+                            #description="ngModel" placeholder="Compose an description..."></textarea>
+
+
+                    </div>
+                    <div class="m-portlet__body  border border-top-2">
+                        <div class="m-section__content">
+                            <button type="submit" class="btn ml-4 btn-light border">Save</button>
+                            <!-- [disabled]="!ourstoryForm.valid" -->
+                            <button pButton type="button" class="btn ml-4 btn-light border">Cancel</button>
+                        </div>
+                    </div>
+                </form>
+                <ng-template #alertMessage></ng-template>
+            </div>
+            <!--end::Portlet-->
+
+
+        </div>
+
+
+
+
+    </div>
+</div>

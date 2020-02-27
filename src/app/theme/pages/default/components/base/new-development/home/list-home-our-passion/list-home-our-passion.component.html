@@ -1,0 +1,56 @@
+<!-- BEGIN: Subheader -->
+<div class="m-subheader" appunwraptag="">
+  <div class="d-flex align-items-center">
+    <div class="mr-auto">
+      <h5 class="m-subheader__title m-subheader__title--separator">Our Passion</h5>
+    </div>
+  </div>
+</div>
+
+<!-- END: Subheader -->
+<div class="m-content">
+  <div class="m-portlet m-portlet--mobile">
+    <div class="m-portlet__head">
+      <div class="m-portlet__head-caption">
+        <div class="m-portlet__head-title">
+          <h5 class="m-portlet__head-text">Manage Our Passion</h5> 
+          <div style="float: right;">
+            <a [routerLink]="['/brewery/add-our-passion/']" class="btn btn-primary btn-sm">Add Our Passion</a>
+          </div>
+        </div>
+      </div>			  
+    </div>
+
+    <div class="m-portlet__body">
+      <ng-template #alertProduct></ng-template>
+      <!--begin: Datatable -->
+      <table class="">
+        <thead>
+          <tr>
+            <th>Passion Title</th>
+            <th>Passion Image</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let passion of passionData;">
+            <td>
+              {{passion.title}}
+            </td>
+            <td>
+                <img width="80px" height="80px" src="http://api.fftb.co.uk/image/ourpassion/{{passion?.id}}" [alt]="passion.title" class="product-img mr-3">
+            </td>
+            <td>
+              <a [routerLink]="['/brewery/edit-our-passion/',(passion?.id)]" class="btn btn-primary btn-sm">Update</a>
+              <a (click)="deletePassion(passion?.id)" class="btn btn-primary btn-sm">Delete</a>
+            </td> 
+          </tr>
+        </tbody>
+      </table>				
+    </div>
+  </div>
+  <!-- END EXAMPLE TABLE PORTLET-->
+
+  <!--Pagination -->
+  <app-pagination *ngIf="totalItems" [pagination_limit]="pagination_limit" [totalItems]="totalItems" [currentPage]="currentPage" (childEvent)="listProducts ($event)"></app-pagination>
+</div>

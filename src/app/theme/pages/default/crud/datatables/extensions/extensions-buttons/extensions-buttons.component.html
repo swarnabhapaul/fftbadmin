@@ -1,0 +1,156 @@
+<!-- BEGIN: Subheader -->
+<div class="m-subheader" appunwraptag="">
+	<div class="d-flex align-items-center">
+		<div class="mr-auto">
+			<h3 class="m-subheader__title m-subheader__title--separator">GREEN KING IPA</h3>
+		</div>
+	</div>
+</div>
+<!-- END: Subheader -->
+<div class="m-content">
+	<div class="m-portlet m-portlet--full-height">
+		<div class="m-portlet__head">
+			<div class="m-portlet__head-caption">
+				<div class="m-portlet__head-title">
+					<h3 class="m-portlet__head-text font-weight-bold">EDIT PRODUCT</h3>
+				</div>
+			</div>
+		</div>
+		<form class="m-profile__form m-form" action="" (ngSubmit)="f.form.valid && submitProduct()" #f="ngForm">
+			<ng-template #alertProduct></ng-template>
+
+			<div class="m-portlet__body">
+				<div class="m-section__sub font-weight-bold pt-4  {{flag2}}" >
+					Select Brewery: <span class="text-danger">*</span>
+				</div>
+				<select class="rstock input_type {{flag2}}" name="brewery_id" [(ngModel)]="model.brewery_id"
+					#brewery_id="ngModel"  >
+					<option value="{{list.id}}" *ngFor="let list of lists">{{list.name}}</option>
+				</select>
+ 				<!-- {{flag}} -->
+				<input 
+				type="hidden"
+				class="input_type" 
+				name="brewery_id" 
+				[(ngModel)]="breweryId"
+				value="breweryId"
+				#brewery_id="ngModel"
+				>
+
+				<div class="m-section__sub font-weight-bold pt-4">
+					Show on page: <span class="text-danger">*</span>
+				</div>
+				<select 
+				class="rstock input_type" 
+				name="show_on_page" 
+				[(ngModel)]="model.show_on_page"
+				#show_on_page="ngModel"
+				>
+				<!-- (change)="onChange($event.target.value)" -->
+					<option value="0" >No Page to show</option>
+					<option value="1" >Home Page</option>
+					<option value="2" >About Us Page</option>
+					<!-- <option value="3" >Both Page</option> -->
+				</select>
+
+				
+
+				<div class="m-section__sub font-weight-bold pt-4">
+					Product Name: <span class="text-danger">*</span>
+				</div>
+				<input class="pname input_type" placeholder="Product Name" maxlength="100" autocomplete="off"
+					name="name" [(ngModel)]="model.name" #name="ngModel" />
+
+				<div class="m-section__sub font-weight-bold pt-4">
+					Price: <span class="text-danger">*</span>
+				</div>
+				<div class="input-container">
+					<i class="fa icon">&#xf154;</i>
+					<input class="price input_type input-field" placeholder="23.23" maxlength="10" autocomplete="off"
+						name="price" [(ngModel)]="model.price" #price="ngModel">
+				</div>
+
+				<ng-template #alertImage></ng-template>
+				<div class="m-portlet__head-title">
+					<h6 class="font-weight-bold  pt-4 mt-4">Product Image</h6>
+					<div class="row  pt-2">
+						<div class="col-md-2">
+							<img class="img_src" [src]="productLogo" />
+						</div>
+
+						<div class="col-md-10 align-left pt-2">
+							<div class="media-body">
+								<div class="text-capitalize mt-4">upload new profile picture</div>
+								<label class="btn-bs-file btn btn-warning mt-2">
+									Upload
+									<input type="file" name="image" (change)="uploadImg ($event)"
+										[(ngModel)]="model.image" />
+								</label>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="m-section__sub font-weight-bold pt-4">Description: <span class="text-danger">*</span></div>
+				<textarea class="text_area" autocomplete="off" name="description" [(ngModel)]="model.description"
+					#description="ngModel"
+					placeholder="Greene king IPA is pint people trust and recommend  to friends. It's an easy drinking, session ale with a hoppy taste and aroma making it clean,crisp and moreish."></textarea>
+
+				<div class="m-section__sub font-weight-bold pt-4">Remaining Stock: <span class="text-danger">*</span>
+				</div>
+				<p class="text-muted"><small>Remaining quantity represents this products stock. This value will
+						automatically be adjusted as product is sold</small></p>
+				<input class="rstock input_type" placeholder="45" maxlength="10" autocomplete="off" name="currentStock"
+					[(ngModel)]="model.currentStock" #currentStock="ngModel" />
+
+				<div class="m-section__sub font-weight-bold pt-4">Type: <span class="text-danger">*</span>
+				</div>
+				<select class="rstock input_type" placeholder="45" maxlength="10" autocomplete="off" name="type"
+					[(ngModel)]="model.type" #type="ngModel">
+					<option value="Bottle">Bottle</option>
+					<option value="Can">Can</option>
+					<option value="Keg">Keg</option>
+				</select>
+
+
+				<div class="m-section__sub font-weight-bold pt-4">Alcohol Content : <span class="text-danger">*</span>
+				</div>
+				<input class="rstock input_type" placeholder="45" maxlength="10" autocomplete="off"
+					name="alcohol_content" [(ngModel)]="model.alcohol_content" #alcohol_content="ngModel" />
+
+				<div class="m-section__sub font-weight-bold pt-4">Size : <span class="text-danger">*</span></div>
+				<input class="rstock input_type" placeholder="45" maxlength="10" autocomplete="off" name="size"
+					[(ngModel)]="model.size" #size="ngModel" />
+
+				<div class="m-section__sub font-weight-bold pt-4">Other Info: <span class="text-danger">*</span></div>
+				<textarea class="text_area" autocomplete="off" name="other_info" [(ngModel)]="model.other_info"
+					#other_info="ngModel" placeholder="Other Info"></textarea>
+
+				<div class="m-section__sub font-weight-bold pt-4">Product Status: <span class="text-danger">*</span>
+				</div>
+				<select 
+				class="rstock input_type" 
+				name="status" 
+				[(ngModel)]="model.status" 
+				#status="ngModel">
+					<option value="1">Active</option>
+					<option value="0">In Active</option>
+				</select>
+			</div>
+
+			<div class="m-portlet__body  border border-top-2">
+				<div class="m-portlet__head-caption">
+					<div class="m-portlet__head-title">
+						<h6 class="font-weight-light"><span class="text-danger">*</span>indicates required</h6>
+					</div>
+				</div>
+				<div class="m-section__content">
+					<button [disabled]="loading" [ngClass]="{'m-loader m-loader--right m-loader--light': loading}"
+						id="m_button_product_submit"
+						class="btn btn-focus m-btn m-btn--custom m-btn--air bg-warning text-dark border border-warning">Save</button>
+					<button pButton type="button" class="btn ml-4">Cancel</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>

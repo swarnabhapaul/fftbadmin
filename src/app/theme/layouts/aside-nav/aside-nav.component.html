@@ -1,0 +1,627 @@
+<!-- BEGIN: Left Aside -->
+<button class="m-aside-left-close m-aside-left-close--skin-dark" id="m_aside_left_close_btn" appunwraptag="">
+    <i class="la la-close"></i>
+</button>
+
+<div id="m_aside_left" class="m-grid__item	m-aside-left m-aside-left--skin-dark">
+    <!-- BEGIN: Aside Menu -->
+    <div id="m_ver_menu" class="m-aside-menu m-aside-menu--skin-dark m-aside-menu--submenu-skin-dark"
+        m-menu-vertical="1" m-menu-scrollable="1" m-menu-dropdown-timeout="500" style="position: relative;">
+        <ul class="m-menu__nav m-menu__nav--dropdown-submenu-arrow">
+            <li class="m-menu__item " routerLinkActive="m-menu__item--active" routerLinkActiveOptions="{ exact: true }"
+                aria-haspopup="true">
+                <a routerLink="/orders" class="m-menu__link">
+                    <i class="m-menu__link-icon flaticon-line-graph"></i>
+                    <span class="m-menu__link-title">
+                        <span class="m-menu__link-wrap">
+                            <span class="m-menu__link-text">Dashboard</span>
+                            <span class="m-menu__link-badge">
+                                <span class="m-badge m-badge--danger">{{ orderCount }}</span>
+                            </span>
+                        </span>
+                    </span>
+                </a>
+            </li>
+
+            <!-- Links for Orders/Payments-Invoices -->
+            <li *ngIf="displayLinkByRole (['brewery', 'admin'])" class="m-menu__item m-menu__item--submenu"
+                routerLinkActive="m-menu__item--open" routerLinkActiveOptions="{ exact: true }" aria-haspopup="true"
+                m-menu-submenu-toggle="hover">
+                <a href="javascript:;" class="m-menu__link m-menu__toggle">
+                    <i class="m-menu__link-icon flaticon-piggy-bank"></i>
+                    <span class="m-menu__link-text">Orders</span>
+                    <i class="m-menu__ver-arrow la la-angle-right"></i>
+                </a>
+                <div class="m-menu__submenu">
+                    <span class="m-menu__arrow"></span>
+                    <ul class="m-menu__subnav">
+                        <li class="m-menu__item" routerLinkActive="m-menu__item--active"
+                            routerLinkActiveOptions="{ exact: true }" aria-haspopup="true">
+                            <a routerLink="/brewery/orders" class="m-menu__link">
+                                <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+                                    <span></span>
+                                </i>
+                                <span class="m-menu__link-text">Orders</span>
+                            </a>
+                        </li>
+
+                        <li class="m-menu__item" routerLinkActive="m-menu__item--active"
+                            routerLinkActiveOptions="{ exact: true }" aria-haspopup="true">
+                            <a routerLink="/brewery/payments" class="m-menu__link">
+                                <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+                                    <span></span>
+                                </i>
+                                <span class="m-menu__link-text">Payments</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+
+            <li *ngIf="displayLinkByRole (['brewery', 'admin'])" class="m-menu__item m-menu__item--submenu"
+                routerLinkActive="m-menu__item--open" routerLinkActiveOptions="{ exact: true }" aria-haspopup="true"
+                m-menu-submenu-toggle="hover">
+                <a href="javascript:;" class="m-menu__link m-menu__toggle">
+                    <i class="m-menu__link-icon flaticon-piggy-bank"></i>
+                    <span class="m-menu__link-text">Manage Breweries</span>
+                    <i class="m-menu__ver-arrow la la-angle-right"></i>
+                </a>
+                <div class="m-menu__submenu">
+                    <span class="m-menu__arrow"></span>
+                    <ul class="m-menu__subnav">
+                        <li class="m-menu__item" routerLinkActive="m-menu__item--active"
+                            routerLinkActiveOptions="{ exact: true }" aria-haspopup="true">
+                            <a routerLink="/admin/breweries" class="m-menu__link">
+                                <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+                                    <span></span>
+                                </i>
+                                <span class="m-menu__link-text">Breweries</span>
+                            </a>
+                        </li>
+
+                        <li class="m-menu__item" routerLinkActive="m-menu__item--active"
+                            routerLinkActiveOptions="{ exact: true }" aria-haspopup="true">
+                            <a routerLink="/users/brewery" class="m-menu__link">
+                                <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+                                    <span></span>
+                                </i>
+                                <span class="m-menu__link-text">Add Breweries</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+
+            <!-- Links for products -->
+            <li *ngIf="displayLinkByRole (['brewery', 'admin'])" class="m-menu__item m-menu__item--submenu"
+                routerLinkActive="m-menu__item--open" routerLinkActiveOptions="{ exact: true }" aria-haspopup="true"
+                m-menu-submenu-toggle="hover">
+                <a href="javascript:;" class="m-menu__link m-menu__toggle">
+                    <i class="m-menu__link-icon flaticon-piggy-bank"></i>
+                    <span class="m-menu__link-text">Products</span>
+                    <i class="m-menu__ver-arrow la la-angle-right"></i>
+                </a>
+                <div class="m-menu__submenu">
+                    <span class="m-menu__arrow"></span>
+                    <ul class="m-menu__subnav">
+                        <li class="m-menu__item" routerLinkActive="m-menu__item--active"
+                            routerLinkActiveOptions="{ exact: true }" aria-haspopup="true">
+                            <a routerLink="/brewery/products" class="m-menu__link">
+                                <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+                                    <span></span>
+                                </i>
+                                <span class="m-menu__link-text">Products</span>
+                            </a>
+                        </li>
+
+                        <li class="m-menu__item" routerLinkActive="m-menu__item--active"
+                            routerLinkActiveOptions="{ exact: true }" aria-haspopup="true">
+                            <a routerLink="/brewery/products/new" class="m-menu__link">
+                                <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+                                    <span></span>
+                                </i>
+                                <span class="m-menu__link-text">Add Product</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+
+            <!-- links for brewery and it's profile -->
+            <li *ngIf="displayLinkByRole (['brewery'])" class="m-menu__item m-menu__item--submenu"
+                routerLinkActive="m-menu__item--open" routerLinkActiveOptions="{ exact: true }" aria-haspopup="true"
+                m-menu-submenu-toggle="hover">
+                <a href="javascript:;" class="m-menu__link m-menu__toggle">
+                    <i class="m-menu__link-icon flaticon-piggy-bank"></i>
+                    <span class="m-menu__link-text">Brewery</span>
+                    <i class="m-menu__ver-arrow la la-angle-right"></i>
+                </a>
+                <div class="m-menu__submenu">
+                    <span class="m-menu__arrow"></span>
+                    <ul class="m-menu__subnav">
+                        <li class="m-menu__item" routerLinkActive="m-menu__item--active"
+                            routerLinkActiveOptions="{ exact: true }" aria-haspopup="true">
+                            <a routerLink="/brewery" class="m-menu__link">
+                                <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+                                    <span></span>
+                                </i>
+                                <span class="m-menu__link-text">Brewery</span>
+                            </a>
+                        </li>
+
+                        <li class="m-menu__item" routerLinkActive="m-menu__item--active"
+                            routerLinkActiveOptions="{ exact: true }" aria-haspopup="true">
+                            <a routerLink="/brewery/managers" class="m-menu__link">
+                                <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+                                    <span></span>
+                                </i>
+                                <span class="m-menu__link-text">Managers</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+
+            <!-- link for blog -->
+            <li *ngIf="displayLinkByRole (['brewery', 'admin'])" class="m-menu__item"
+                routerLinkActive="m-menu__item--active" routerLinkActiveOptions="{ exact: true }" aria-haspopup="true">
+                <a routerLink="/brewery/blogs" class="m-menu__link">
+                    <i class="m-menu__link-icon flaticon-statistics"></i>
+                    <span class="m-menu__link-text">Blogs</span>
+                </a>
+            </li>
+
+
+            <li *ngIf="displayLinkByRole (['brewery', 'admin'])" class="m-menu__item m-menu__item--submenu"
+                routerLinkActive="m-menu__item--open" routerLinkActiveOptions="{ exact: true }" aria-haspopup="true"
+                m-menu-submenu-toggle="hover">
+                <a href="javascript:;" class="m-menu__link m-menu__toggle">
+                    <i class="m-menu__link-icon flaticon-piggy-bank"></i>
+                    <span class="m-menu__link-text">Profile</span>
+                    <i class="m-menu__ver-arrow la la-angle-right"></i>
+                </a>
+                <div class="m-menu__submenu">
+                    <span class="m-menu__arrow"></span>
+                    <ul class="m-menu__subnav">
+                        <li class="m-menu__item" routerLinkActive="m-menu__item--active"
+                            routerLinkActiveOptions="{ exact: true }" aria-haspopup="true">
+                            <a routerLink="/profile" class="m-menu__link">
+                                <i class="m-menu__link-bullet m-menu__link-bullet--dot"></i>
+                                <span class="m-menu__link-text">Profile Edit</span>
+                            </a>
+                        </li>
+
+                        <li class="m-menu__item" routerLinkActive="m-menu__item--active"
+                            routerLinkActiveOptions="{ exact: true }" aria-haspopup="true">
+                            <a routerLink="/profile/Add_address" class="m-menu__link">
+                                <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+                                    <span></span>
+                                </i>
+                                <span class="m-menu__link-text"> Add Address</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+
+            <!-- FAQ -->
+            <li class="m-menu__item" routerLinkActive="m-menu__item--active" routerLinkActiveOptions="{ exact: true }"
+                aria-haspopup="true">
+                <a routerLink="/faq" class="m-menu__link">
+                    <i class="m-menu__link-icon flaticon-statistics"></i>
+                    <span class="m-menu__link-text">FAQ</span>
+                </a>
+            </li>
+
+            <!-- ============================= New Development For Admin ============================== -->
+            
+            <li *ngIf="displayLinkByRole (['admin'])" class="m-menu__item m-menu__item--submenu"
+                routerLinkActive="m-menu__item--open" routerLinkActiveOptions="{ exact: true }" aria-haspopup="true"
+                m-menu-submenu-toggle="hover">
+                <a href="javascript:;" class="m-menu__link m-menu__toggle">
+                    <i class="m-menu__link-icon flaticon-piggy-bank"></i>
+                    <span class="m-menu__link-text">Manage Banner</span>
+                    <i class="m-menu__ver-arrow la la-angle-right"></i>
+                </a>
+                <div class="m-menu__submenu">
+                    <span class="m-menu__arrow"></span>
+                    <ul class="m-menu__subnav">
+                        <li class="m-menu__item" routerLinkActive="m-menu__item--active"
+                            routerLinkActiveOptions="{ exact: true }" aria-haspopup="true">
+                            <a routerLink="/admin/list-mainsite-banner" class="m-menu__link">
+                                <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+                                    <span></span>
+                                </i>
+                                <span class="m-menu__link-text">Banner List</span>
+                            </a>
+                        </li>
+
+                        <li class="m-menu__item" routerLinkActive="m-menu__item--active"
+                            routerLinkActiveOptions="{ exact: true }" aria-haspopup="true">
+                            <a routerLink="/admin/add-mainsite-banner" class="m-menu__link">
+                                <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+                                    <span></span>
+                                </i>
+                                <span class="m-menu__link-text">Add Banner</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li *ngIf="displayLinkByRole (['admin'])" class="m-menu__item m-menu__item--submenu"
+                routerLinkActive="m-menu__item--open" routerLinkActiveOptions="{ exact: true }" aria-haspopup="true"
+                m-menu-submenu-toggle="hover">
+                <a href="javascript:;" class="m-menu__link m-menu__toggle">
+                    <i class="m-menu__link-icon flaticon-piggy-bank"></i>
+                    <span class="m-menu__link-text">Manage Why Choose</span>
+                    <i class="m-menu__ver-arrow la la-angle-right"></i>
+                </a>
+                <div class="m-menu__submenu">
+                    <span class="m-menu__arrow"></span>
+                    <ul class="m-menu__subnav">
+                        <li class="m-menu__item" routerLinkActive="m-menu__item--active"
+                            routerLinkActiveOptions="{ exact: true }" aria-haspopup="true">
+                            <a routerLink="/admin/list-whychoose" class="m-menu__link">
+                                <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+                                    <span></span>
+                                </i>
+                                <span class="m-menu__link-text">Why Choose List</span>
+                            </a>
+                        </li>
+
+                        <li class="m-menu__item" routerLinkActive="m-menu__item--active"
+                            routerLinkActiveOptions="{ exact: true }" aria-haspopup="true">
+                            <a routerLink="/admin/add-whychoose" class="m-menu__link">
+                                <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+                                    <span></span>
+                                </i>
+                                <span class="m-menu__link-text">Add Why Choose</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>    
+            <!-- =================================================================== -->
+
+
+            <!-- ============================= New Development ============================== -->
+            <li *ngIf="displayLinkByRole (['brewery'])" class="m-menu__item m-menu__item--submenu"
+                routerLinkActive="m-menu__item--open" routerLinkActiveOptions="{ exact: true }" aria-haspopup="true"
+                m-menu-submenu-toggle="hover">
+                <a href="javascript:;" class="m-menu__link m-menu__toggle">
+                    <i class="m-menu__link-icon flaticon-piggy-bank"></i>
+                    <span class="m-menu__link-text">Manage Site</span>
+                    <i class="m-menu__ver-arrow la la-angle-right"></i>
+                </a>
+                <div class="m-menu__submenu">
+                    <span class="m-menu__arrow"></span>
+                    <ul class="m-menu__subnav">
+
+                        <!-- Links for Our Banner -->
+                        <li *ngIf="displayLinkByRole (['brewery'])" class="m-menu__item  m-menu__item--submenu"
+                            routerLinkActive="m-menu__item--open" routerLinkActiveOptions="{ exact: true }"
+                            aria-haspopup="true" m-menu-submenu-toggle="hover">
+                            <a href="javascript:;" class="m-menu__link m-menu__toggle">
+                                <i class="m-menu__link-icon flaticon-piggy-bank"></i>
+                                <span class="m-menu__link-text"> Banner</span>
+                                <i class="m-menu__ver-arrow la la-angle-right"></i>
+                            </a>
+                            <div class="m-menu__submenu">
+                                <span class="m-menu__arrow"></span>
+                                <ul class="m-menu__subnav">
+                                    <li class="m-menu__item" routerLinkActive="m-menu__item--active"
+                                        routerLinkActiveOptions="{ exact: true }" aria-haspopup="true">
+                                        <a routerLink="/brewery/banner" class="m-menu__link">
+                                            <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+                                                <span></span>
+                                            </i>
+                                            <span class="m-menu__link-text">Banner</span>
+                                        </a>
+                                    </li>
+
+                                    <li class="m-menu__item" routerLinkActive="m-menu__item--active"
+                                        routerLinkActiveOptions="{ exact: true }" aria-haspopup="true">
+                                        <a routerLink="/brewery/add-banner" class="m-menu__link">
+                                            <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+                                                <span></span>
+                                            </i>
+                                            <span class="m-menu__link-text">Add Banner</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+
+                        <!-- Links for Testimonial -->
+                        <li *ngIf="displayLinkByRole (['brewery'])" class="m-menu__item  m-menu__item--submenu"
+                            routerLinkActive="m-menu__item--open" routerLinkActiveOptions="{ exact: true }"
+                            aria-haspopup="true" m-menu-submenu-toggle="hover">
+                            <a href="javascript:;" class="m-menu__link m-menu__toggle">
+                                <i class="m-menu__link-icon flaticon-piggy-bank"></i>
+                                <span class="m-menu__link-text"> Testimonial</span>
+                                <i class="m-menu__ver-arrow la la-angle-right"></i>
+                            </a>
+                            <div class="m-menu__submenu">
+                                <span class="m-menu__arrow"></span>
+                                <ul class="m-menu__subnav">
+                                    <li class="m-menu__item" routerLinkActive="m-menu__item--active"
+                                        routerLinkActiveOptions="{ exact: true }" aria-haspopup="true">
+                                        <a routerLink="/brewery/testimonial" class="m-menu__link">
+                                            <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+                                                <span></span>
+                                            </i>
+                                            <span class="m-menu__link-text">Testimonial</span>
+                                        </a>
+                                    </li>
+
+                                    <li class="m-menu__item" routerLinkActive="m-menu__item--active"
+                                        routerLinkActiveOptions="{ exact: true }" aria-haspopup="true">
+                                        <a routerLink="/brewery/add-testimonial" class="m-menu__link">
+                                            <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+                                                <span></span>
+                                            </i>
+                                            <span class="m-menu__link-text">Add Testimonial</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+
+                        <!-- Links for Our Team -->
+                        <li *ngIf="displayLinkByRole (['brewery'])" class="m-menu__item  m-menu__item--submenu"
+                            routerLinkActive="m-menu__item--open" routerLinkActiveOptions="{ exact: true }"
+                            aria-haspopup="true" m-menu-submenu-toggle="hover">
+                            <a href="javascript:;" class="m-menu__link m-menu__toggle">
+                                <i class="m-menu__link-icon flaticon-piggy-bank"></i>
+                                <span class="m-menu__link-text"> Our Team</span>
+                                <i class="m-menu__ver-arrow la la-angle-right"></i>
+                            </a>
+                            <div class="m-menu__submenu">
+                                <span class="m-menu__arrow"></span>
+                                <ul class="m-menu__subnav">
+                                    <li class="m-menu__item" routerLinkActive="m-menu__item--active"
+                                        routerLinkActiveOptions="{ exact: true }" aria-haspopup="true">
+                                        <a routerLink="/brewery/our-team" class="m-menu__link">
+                                            <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+                                                <span></span>
+                                            </i>
+                                            <span class="m-menu__link-text">Our Team</span>
+                                        </a>
+                                    </li>
+
+                                    <li class="m-menu__item" routerLinkActive="m-menu__item--active"
+                                        routerLinkActiveOptions="{ exact: true }" aria-haspopup="true">
+                                        <a routerLink="/brewery/add-our-team" class="m-menu__link">
+                                            <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+                                                <span></span>
+                                            </i>
+                                            <span class="m-menu__link-text">Add Our Team</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+
+                        <!-- Links for Subscriber -->
+                        <li *ngIf="displayLinkByRole (['brewery'])" class="m-menu__item  m-menu__item--submenu"
+                            routerLinkActive="m-menu__item--open" routerLinkActiveOptions="{ exact: true }"
+                            aria-haspopup="true" m-menu-submenu-toggle="hover">
+                            <a href="javascript:;" class="m-menu__link m-menu__toggle">
+                                <i class="m-menu__link-icon flaticon-piggy-bank"></i>
+                                <span class="m-menu__link-text"> Subscriber</span>
+                                <i class="m-menu__ver-arrow la la-angle-right"></i>
+                            </a>
+                            <div class="m-menu__submenu">
+                                <span class="m-menu__arrow"></span>
+                                <ul class="m-menu__subnav">
+                                    <li class="m-menu__item" routerLinkActive="m-menu__item--active"
+                                        routerLinkActiveOptions="{ exact: true }" aria-haspopup="true">
+                                        <a routerLink="/brewery/send-subscriber" class="m-menu__link">
+                                            <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+                                                <span></span>
+                                            </i>
+                                            <span class="m-menu__link-text">Send Subscriber </span>
+                                        </a>
+                                    </li>
+
+                                    <li class="m-menu__item" routerLinkActive="m-menu__item--active"
+                                        routerLinkActiveOptions="{ exact: true }" aria-haspopup="true">
+                                        <a routerLink="/brewery/subscriber-list" class="m-menu__link">
+                                            <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+                                                <span></span>
+                                            </i>
+                                            <span class="m-menu__link-text">Subscriber List </span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+
+                        <!-- Links for Our Story -->
+                        <li *ngIf="displayLinkByRole (['brewery'])" class="m-menu__item  m-menu__item--submenu"
+                            routerLinkActive="m-menu__item--open" routerLinkActiveOptions="{ exact: true }"
+                            aria-haspopup="true" m-menu-submenu-toggle="hover">
+                            <a href="javascript:;" class="m-menu__link m-menu__toggle">
+                                <i class="m-menu__link-icon flaticon-piggy-bank"></i>
+                                <span class="m-menu__link-text"> Our Story</span>
+                                <i class="m-menu__ver-arrow la la-angle-right"></i>
+                            </a>
+                            <div class="m-menu__submenu">
+                                <span class="m-menu__arrow"></span>
+                                <ul class="m-menu__subnav">
+                                    <li class="m-menu__item" routerLinkActive="m-menu__item--active"
+                                        routerLinkActiveOptions="{ exact: true }" aria-haspopup="true">
+                                        <a routerLink="/brewery/our-story" class="m-menu__link">
+                                            <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+                                                <span></span>
+                                            </i>
+                                            <span class="m-menu__link-text">Our Story</span>
+                                        </a>
+                                    </li>
+
+                                    <li class="m-menu__item" routerLinkActive="m-menu__item--active"
+                                        routerLinkActiveOptions="{ exact: true }" aria-haspopup="true">
+                                        <a routerLink="/brewery/add-our-story" class="m-menu__link">
+                                            <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+                                                <span></span>
+                                            </i>
+                                            <span class="m-menu__link-text">Add Our Story</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+
+                        <!-- Links for Our Process -->
+                        <li *ngIf="displayLinkByRole (['brewery'])" class="m-menu__item  m-menu__item--submenu"
+                            routerLinkActive="m-menu__item--open" routerLinkActiveOptions="{ exact: true }"
+                            aria-haspopup="true" m-menu-submenu-toggle="hover">
+                            <a href="javascript:;" class="m-menu__link m-menu__toggle">
+                                <i class="m-menu__link-icon flaticon-piggy-bank"></i>
+                                <span class="m-menu__link-text"> Our Process</span>
+                                <i class="m-menu__ver-arrow la la-angle-right"></i>
+                            </a>
+                            <div class="m-menu__submenu">
+                                <span class="m-menu__arrow"></span>
+                                <ul class="m-menu__subnav">
+                                    <li class="m-menu__item" routerLinkActive="m-menu__item--active"
+                                        routerLinkActiveOptions="{ exact: true }" aria-haspopup="true">
+                                        <a routerLink="/brewery/our-process" class="m-menu__link">
+                                            <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+                                                <span></span>
+                                            </i>
+                                            <span class="m-menu__link-text">Our Process</span>
+                                        </a>
+                                    </li>
+
+                                    <li class="m-menu__item" routerLinkActive="m-menu__item--active"
+                                        routerLinkActiveOptions="{ exact: true }" aria-haspopup="true">
+                                        <a routerLink="/brewery/add-our-process" class="m-menu__link">
+                                            <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+                                                <span></span>
+                                            </i>
+                                            <span class="m-menu__link-text">Add Our Process</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+
+                        <!-- Links for Conatct -->
+                        <li *ngIf="displayLinkByRole (['brewery'])" class="m-menu__item  m-menu__item--submenu"
+                            routerLinkActive="m-menu__item--open" routerLinkActiveOptions="{ exact: true }"
+                            aria-haspopup="true" m-menu-submenu-toggle="hover">
+                            <a href="javascript:;" class="m-menu__link m-menu__toggle">
+                                <i class="m-menu__link-icon flaticon-piggy-bank"></i>
+                                <span class="m-menu__link-text"> Manage Contact</span>
+                                <i class="m-menu__ver-arrow la la-angle-right"></i>
+                            </a>
+                            <div class="m-menu__submenu">
+                                <span class="m-menu__arrow"></span>
+                                <ul class="m-menu__subnav">
+                                    <li class="m-menu__item" routerLinkActive="m-menu__item--active"
+                                        routerLinkActiveOptions="{ exact: true }" aria-haspopup="true">
+                                        <a routerLink="/brewery/contact" class="m-menu__link">
+                                            <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+                                                <span></span>
+                                            </i>
+                                            <span class="m-menu__link-text">List of Contact Details</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+
+
+                        <!-- Links for CMS -->
+
+
+                        <li *ngIf="displayLinkByRole (['brewery'])" class="m-menu__item  m-menu__item--submenu"
+                            routerLinkActive="m-menu__item--open" routerLinkActiveOptions="{ exact: true }"
+                            aria-haspopup="true" m-menu-submenu-toggle="hover">
+                            <a href="javascript:;" class="m-menu__link m-menu__toggle">
+                                <i class="m-menu__link-icon flaticon-piggy-bank"></i>
+                                <span class="m-menu__link-text"> Manage CMS</span>
+                                <i class="m-menu__ver-arrow la la-angle-right"></i>
+                            </a>
+                            <div class="m-menu__submenu">
+                                <span class="m-menu__arrow"></span>
+                                <ul class="m-menu__subnav">
+                                    <li class="m-menu__item" routerLinkActive="m-menu__item--active"
+                                        routerLinkActiveOptions="{ exact: true }" aria-haspopup="true">
+                                        <a routerLink="/brewery/second-about-section" class="m-menu__link">
+                                            <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+                                                <span></span>
+                                            </i>
+                                            <span class="m-menu__link-text">Manage About Second Section</span>
+                                        </a>
+                                    </li>
+
+                                    <li class="m-menu__item" routerLinkActive="m-menu__item--active"
+                                        routerLinkActiveOptions="{ exact: true }" aria-haspopup="true">
+                                        <a routerLink="/brewery/list-third-about-section" class="m-menu__link">
+                                            <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+                                                <span></span>
+                                            </i>
+                                            <span class="m-menu__link-text">Manage About Third Section</span>
+                                        </a>
+                                    </li>
+
+                                    <li class="m-menu__item" routerLinkActive="m-menu__item--active"
+                                        routerLinkActiveOptions="{ exact: true }" aria-haspopup="true">
+                                        <a routerLink="/brewery/add-contact-page-details" class="m-menu__link">
+                                            <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+                                                <span></span>
+                                            </i>
+                                            <span class="m-menu__link-text">Manage Contact Page Content</span>
+                                        </a>
+                                    </li>
+
+                                    <li class="m-menu__item" routerLinkActive="m-menu__item--active"
+                                        routerLinkActiveOptions="{ exact: true }" aria-haspopup="true">
+                                        <a routerLink="/brewery/list-our-passion" class="m-menu__link">
+                                            <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+                                                <span></span>
+                                            </i>
+                                            <span class="m-menu__link-text">Manage Our Passion</span>
+                                        </a>
+                                    </li>
+
+                                    <!-- ///////////////////////////////////////////////////// -->
+
+                                    <li class="m-menu__item" routerLinkActive="m-menu__item--active"
+                                        routerLinkActiveOptions="{ exact: true }" aria-haspopup="true">
+                                        <a routerLink="/brewery/list-what-we-learned-so-far" class="m-menu__link">
+                                            <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+                                                <span></span>
+                                            </i>
+                                            <span class="m-menu__link-text">Manage What We Learned Section</span>
+                                        </a>
+                                    </li>
+
+                                    <li class="m-menu__item" routerLinkActive="m-menu__item--active"
+                                        routerLinkActiveOptions="{ exact: true }" aria-haspopup="true">
+                                        <a routerLink="/brewery/list-home-third-section" class="m-menu__link">
+                                            <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+                                                <span></span>
+                                            </i>
+                                            <span class="m-menu__link-text">Manage Add Home Third Section</span>
+                                        </a>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </li>
+
+                    </ul>
+                </div>
+            </li>
+            <!-- =================================================================== -->
+
+
+
+        </ul>
+    </div>
+    <!-- END: Aside Menu -->
+</div>
+<!-- END: Left Aside -->

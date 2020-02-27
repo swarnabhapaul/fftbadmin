@@ -1,0 +1,86 @@
+<div class="m-content">
+	<div class="row">
+		<div class="col-xl-12">
+			<!--begin::Portlet-->
+			<div class="m-portlet">
+				<div class="m-portlet__head">
+					<div class="m-portlet__head-caption">
+						<div class="m-portlet__head-title">
+							<h3 class="m-portlet__head-text">Edit Our Process</h3>
+						</div>
+					</div>
+				</div>
+				<!-- <form class="m-login__form m-form" [formGroup]="ourprocessForm" (ngSubmit)="onSubmit()" method="post"> -->
+
+				<form (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" class="m-login__form m-form" method="post">
+
+					<div class="m-portlet__body">
+
+						<div class="m-section__sub font-weight-bold pt-4">Process Name: <span
+								class="text-danger">*</span></div>
+						<input type="text" class="input_type" required name="process_name"
+							[(ngModel)]="model.process_name" #process_name="ngModel">
+
+						<div class="m-section__sub font-weight-bold pt-4">Process Title: <span
+								class="text-danger">*</span></div>
+						<input type="text" class="input_type" required name="process_title"
+							[(ngModel)]="model.process_title" #process_title="ngModel">
+
+						<div class="m-section__sub font-weight-bold pt-4">Show on page: <span
+								class="text-danger">*</span></div>
+						<select class="input_type" required name="show_on_page" [(ngModel)]="model.show_on_page"
+							#show_on_page="ngModel">
+							<option value="1">About Us</option>
+							<option value="2">Our Story</option>
+							<option value="3">Both</option>
+						</select>
+
+						<!-- upload image -->
+						<ng-template #alertImage></ng-template>
+						<div class="m-portlet__head-title">
+							<h6 class="font-weight-bold  pt-4 mt-4">Process Image</h6>
+							<div class="row  pt-2">
+								<div class="col-md-2" *ngIf="blogLogo">
+									<img [src]="blogLogo" height="100px" width="100px">
+								</div>
+								<div class="col-md-10 align-left pt-2">
+									<div class="media-body margin_image">
+										<div class="text-capitalize mt-4">Upload New Image</div>
+										<label class="btn-bs-file btn btn-warning mt-2">
+											Upload
+											<input type="file" (change)="uploadImg ($event)" />
+										</label>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div style="color: crimson;">
+							<div>Process Image 460 * 500 px</div>
+						</div>
+
+						<div class="m-section__sub font-weight-bold pt-4">Process Content: </div>
+						<textarea id="my-summernote" name="process_short_des" [(ngModel)]="model.process_short_des"
+							#process_image="ngModel" placeholder="Compose an epic..."></textarea>
+
+					</div>
+					<div class="m-portlet__body  border border-top-2">
+						<div class="m-section__content">
+							<button type="submit" class="btn ml-4 btn-light border">Save</button>
+							<!-- [disabled]="!ourprocessForm.valid" -->
+							<button pButton type="button" class="btn ml-4 btn-light border">Cancel</button>
+						</div>
+					</div>
+				</form>
+			</div>
+			<!--end::Portlet-->
+
+			<div class="alert alert-{{flag}}" role="alert" *ngIf="message">
+				{{message}}
+			</div>
+		</div>
+
+
+
+
+	</div>
+</div>

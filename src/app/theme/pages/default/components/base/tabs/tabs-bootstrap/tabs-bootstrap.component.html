@@ -1,0 +1,51 @@
+<!-- BEGIN: Subheader -->
+<div class="m-subheader" appunwraptag="">
+    <div class="d-flex align-items-center justify-content-between">
+        <div class="m-subheader__title m-subheader__title--separator display-5">Blog</div>
+        <a *ngIf="userRole === 'brewery'" class="ui-button-warning btn btn-warning border" routerLink="/brewery/blogs/new">New Post</a>
+    </div>
+</div>
+
+<!-- END: Subheader -->
+<div class="m-content">
+        <ul class="nav nav-tabs  m-tabs-line" role="tablist">
+                <li class="nav-item m-tabs__item"> <a class="nav-link m-tabs__link active" data-toggle="tab" href="#m_tabs_1_1" (click)="changeStatus(true, this)" role="tab">Published</a> </li>
+                
+                <li class="nav-item m-tabs__item"> <a class="nav-link m-tabs__link" data-toggle="tab" href="#m_tabs_1_3" (click)="changeStatus(false, this)" role="tab">Drafts</a> </li>
+            </ul>
+    
+    <div class="m-portlet">
+        <div class="m-portlet__head">
+            <table>
+                <tbody>
+                    <tr>
+                        <td><h5 class="m-portlet__head-text pub_post">PUBLISHED POSTS</h5> </td>
+                        <td class="float-right"><button pButton type="button" class="btn ml-4 btn-light border">View Blog</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="m-portlet__body">
+            <!--begin::Section-->
+           <div class="m-portlet__head-title" *ngFor="let blog of blogs">                    
+                <div class="row  pt-2">
+                    <div class="col-md-2">
+                        <img [src]="blog?.logo" />
+                    </div>
+                    <div class="col-md-10 align-left pt-2">
+                        <div class="media-body ml-4 pl-4">
+                            <div class="text-capitalize mt-4"><h3 class="font-weight-bold ml-4">{{ blog?.title }}</h3></div>
+                            <button pButton type="button" routerLink="/brewery/blogs/{{ blog?.id }}" class="btn btn-light ml-4 border">Edit</button>
+                            <button pButton type="button" (click)="updateBlogStatus(blog?.id, blog?.status)" class="btn btn-light ml-4 border text-capitalize">{{ blog?.status ? 'draft' : 'published' }}</button>
+                            <p class="text-muted pt-4 ml-4">Published on {{ blog?.created_at * 1000 | date:'d MMMM y' }}</p>
+                        </div>  
+                    </div>
+                </div>
+            </div>
+            <!--end::Section-->            
+        </div>
+    </div>
+    <!--Pagination -->
+    <app-pagination *ngIf="totalItems" [pagination_limit]="pagination_limit" [totalItems]="totalItems" [currentPage]="currentPage" (childEvent)="getBlogList ($event)"></app-pagination>
+</div>

@@ -1,0 +1,70 @@
+<!-- BEGIN: Subheader -->
+<div class="m-subheader" appunwraptag="">
+	<div class="d-flex align-items-center">
+		<div class="mr-auto">
+			<h5 class="m-subheader__title m-subheader__title--separator">PRODUCTS</h5>				
+		</div>
+	</div>
+</div>
+
+<!-- END: Subheader -->
+<div class="m-content">
+	<div class="m-portlet m-portlet--mobile">
+		<div class="m-portlet__head">
+			<div class="m-portlet__head-caption">
+				<div class="m-portlet__head-title">
+					<h5 class="m-portlet__head-text">Manage Products</h5> 
+				</div>
+			</div>			  
+		</div>
+
+		<div class="m-portlet__body">
+			<ng-template #alertProduct></ng-template>
+			<!--begin: Datatable -->
+			<table class="">
+				<thead>
+					<tr>
+						<th>Product</th>
+						<th>Stock</th>
+						<th># Orders</th>
+						<th>Status</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr *ngFor="let product of products;">
+						<td>
+							<img [src]="product?.picture" [alt]="product?.name" class="product-img mr-3">
+							<a class="text-uppercase text-muted" routerLink="/brewery/products/{{ product?.id }}">{{ product?.name }}</a>
+						</td>
+						<td>
+							{{product.stock ? product.stock : 'Out of stock'}}
+						</td>
+						<td>{{ product?.count_orders }}</td>
+						<td>
+							{{product.status == '1' ? 'Active' : 'In-active'}}
+						</td>
+						<td>
+							<div class="dropdown">
+								<i class="fa dropbtn p-3 cursor-pointer">&#xf142;</i>
+								<ul class="dropdown-content list-group list-group-flush">
+									<!-- <li class="list-group-item cursor-pointer text-secondary"><i style='font-size:12px' class='fas'>&#xf06e;</i> Enable/Disable</li> -->
+
+									<!-- <li class="list-group-item cursor-pointer text-secondary" (click)="deleteProduct(product?.id)"><i style='font-size:12px' class="fas">&#xe872;</i> Delete Product</li> -->
+
+									<li class="list-group-item cursor-pointer text-capitalize text-secondary" (click)="updateProductStatus (product?.id, product?.status)"><i style='font-size:12px' class='fas'>&#xf06e;</i> {{ product?.status ? 'disable' : 'enable' }} product</li>
+
+									<li class="list-group-item cursor-pointer text-secondary" (click)="deleteProduct(product?.id)"><i style="font-size:12px" class="fa">&#xf1f8;</i> Delete Product</li>
+								</ul>
+							</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>				
+		</div>
+	</div>
+	<!-- END EXAMPLE TABLE PORTLET-->
+
+	<!--Pagination -->
+	<app-pagination *ngIf="totalItems" [pagination_limit]="pagination_limit" [totalItems]="totalItems" [currentPage]="currentPage" (childEvent)="listProducts ($event)"></app-pagination>
+</div>

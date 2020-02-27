@@ -1,0 +1,49 @@
+<div class="m-content">
+  <div class="row">
+    <div class="col-xl-12">
+      <!--begin::Portlet-->
+      <div class="m-portlet">
+        <div class="m-portlet__head">
+          <div class="m-portlet__head-caption">
+            <div class="m-portlet__head-title">
+              <h3 class="m-portlet__head-text">Manage Send Subscriber</h3>
+            </div>
+          </div>
+        </div>
+        <form class="m-login__form m-form" [formGroup]="sendsubscriberForm" (ngSubmit)="onSubmit()" method="post">
+
+          <div class="m-portlet__body">
+            <div class="m-section__sub font-weight-bold pt-4">Subscriber Title: <span class="text-danger">*</span></div>
+            <input type="text" 
+            class="input_type" 
+            required 
+            formControlName="subject"
+            >
+
+            <div class="m-section__sub font-weight-bold pt-4">Subscriber Emails: <span class="text-danger">*</span></div>
+            <select class="" multiple required formControlName="emailids">
+                <option  *ngFor="let subscriber of subscriberData">
+                    {{subscriber.subscribe_email}}
+                </option>
+            </select>
+            
+            <div class="m-section__sub font-weight-bold pt-4">subscriber Content: </div>
+            <textarea id="my-summernote" formControlName="message"
+              placeholder="Compose an epic..."></textarea>
+          </div>
+          <div class="m-portlet__body  border border-top-2">
+            <div class="m-section__content">
+              <button [disabled]="!sendsubscriberForm.valid" type="submit" class="btn ml-4 btn-light border">Save</button>
+              <button pButton type="button" class="btn ml-4 btn-light border">Cancel</button>
+            </div>
+          </div>
+        </form>
+      </div>
+      <!--end::Portlet-->
+
+      <div class="alert alert-{{flag}}" role="alert" *ngIf="message">
+        {{message}}
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,319 @@
+<div class="m-grid__item bg_img m-grid__item--fluid m-grid m-grid--ver-desktop m-grid--desktop m-grid--tablet-and-mobile m-grid--hor-tablet-and-mobile m-login m-login--1 m-login--signin"
+	id="m_login">
+	<div class="m-grid__item m-login__aside">
+		<div class="m-stack m-stack--hor m-stack--desktop">
+			<div class="m-stack__item m-stack__item--fluid">
+
+				<div class="m-login__wrapper">
+
+					<div class="m-login__logo">
+
+						<img src="./assets/app/media/img//logos/fftb-logo.png">
+
+					</div>
+					<div class="card m-login__signin">
+						<div class="row m-login__head">
+							<div class="col-md-6">
+								<h3 class="m-login__title text-muted font-weight-bold m--align-left pt-8">REGISTER
+									CUSTOMER</h3>
+							</div>
+							<div class="col-md-6">
+								<div class="col m--align-right for_pswrd">
+									<p class="text-dark ">Already Have An Account ?</p>
+								</div>
+							</div>
+						</div>
+
+						<form (ngSubmit)="f.form.valid && signin()" #f="ngForm" class="m-login__form m-form" action="">
+							<ng-template #alertSignin></ng-template>
+							zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz
+							<div class="row">
+								<div class="col-md-3 pt-2 pl-4"><label for="email" class="form-padding">Email</label>
+								</div>
+								<div class="col-md-9"><input class="form-control m-input" type="text"
+										placeholder="Email" name="email" [(ngModel)]="model.email" #email="ngModel"
+										autocomplete="off"></div>
+							</div>
+							<br>
+							<div class="row">
+								<div class="col-md-3 pt-2 pl-4"><label for="password" class="form-padding">
+										Password</label></div>
+								<div class="col-md-9">
+									<input class="form-control m-input m-login__form-input--last" type="password"
+										placeholder="Password" name="password" [(ngModel)]="model.password"
+										#password="ngModel">
+								</div>
+							</div>
+							<br>
+							<div class="row">
+								<div class="col-md-3 pt-2 pl-4"><label for="password" class="form-padding">Confirm
+										Password</label></div>
+								<div class="col-md-9">
+									<input class="form-control m-input m-login__form-input--last" type="password"
+										placeholder="Confirm Password" name="cpassword" [(ngModel)]="model.cpassword"
+										#cpassword="ngModel">
+								</div>
+							</div>
+
+							<div class="row m-login__form-sub">
+								<div class="col m--align-left">
+									<button [disabled]="loading"
+										[ngClass]="{'m-loader m-loader--right m-loader--light': loading}"
+										id="m_login_signin_submit"
+										class="btn btn-focus m-btn m-btn--custom m-btn--air bg-warning text-dark border border-warning">Sign
+										In</button>
+									<label class="m-checkbox m-checkbox--focus">
+										<input type="checkbox" name="remember" [(ngModel)]="model.remember"
+											#remember="ngModel"> <small>Remember me</small>
+										<span></span>
+									</label>
+								</div>
+								<!-- <div class="col"> -->
+
+								<!-- <a href="javascript:;" id="m_login_forget_password" class="text-dark">Forget Password ?</a> -->
+
+								<!-- 	</div> -->
+							</div>
+							<div class="m-login__form-action">
+								<!-- <button [disabled]="loading" [ngClass]="{'m-loader m-loader--right m-loader--light': loading}" id="m_login_signin_submit" class="btn btn-focus m-btn m-btn--pill m-btn--custom m-btn--air bg-warning text-dark border border-warning">Sign In</button> -->
+							</div>
+						</form>
+
+					</div>
+
+					<!-- <div class="m-login__signup">
+									<div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+											<a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Basic Info</a>
+	
+											<a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Company Info</a>
+	
+											<a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Additional Info</a>
+											
+										</div>
+							</div> -->
+					<!-- <div id="nav-tabContent"> -->
+					<!-- <div class="card m-login__signup tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+	
+									<!-- Basic Info start --
+									<div class="row m-login__head">
+											<div class="col-md-6">
+												<h3 class="m-login__title text-muted font-weight-bold m--align-left pl-8 pt-8">REGISTER BREWERY</h3>
+											</div>
+											<div class="col-md-6">
+												<div class="col m--align-right for_pswrd">
+													<p class="text-dark ">Basic Info</p>
+												</div>
+											</div>
+										</div>
+										
+										<form (ngSubmit)="f.form.valid && signin()" #f="ngForm" class="m-login__form m-form" action=""><ng-template #alertSignin></ng-template>
+											<div class="row">
+												<div class="col-md-3 pt-2 pl-4"><label for="email" class="form-padding">Email</label></div>
+												<div class="col-md-9"><input class="form-control m-input" type="text" placeholder="Email" name="email" [(ngModel)]="model.email" #email="ngModel" autocomplete="off"></div>
+											</div>
+											<br>
+											<div class="row">
+													<div class="col-md-3 pt-2 pl-4"><label for="email" class="form-padding">Brewery Name</label></div>
+													<div class="col-md-9"><input class="form-control m-input" type="text" placeholder="Email" name="email" [(ngModel)]="model.email" #email="ngModel" autocomplete="off"></div>
+												</div>
+												<br>
+											<div class="row">
+												<div class="col-md-3 pt-2 pl-4"><label for="password" class="form-padding"> Password</label></div>
+												<div class="col-md-9">
+														<input class="form-control m-input m-login__form-input--last" type="password" placeholder="Password" name="password" [(ngModel)]="model.password" #password="ngModel">
+												</div>
+											</div>
+											
+											<div class="row m-login__form-sub">
+												<div class="col m--align-left">
+														<button [disabled]="loading" [ngClass]="{'m-loader m-loader--right m-loader--light': loading}" id="m_login_signin_submit" class="btn btn-focus m-btn m-btn--custom m-btn--air bg-warning text-dark border border-warning">Register</button><label class="m-checkbox m-checkbox--focus">
+																<button [disabled]="loading"  id="m_login_forget_password_cancel" class="btn m-btn m-btn--custom text-light border border-light">Cancel</button>
+															
+																</label>
+														<!-- <label class="m-checkbox m-checkbox--focus">
+																<input type="checkbox" name="remember" [(ngModel)]="model.remember" #remember="ngModel"> <small>Remember me</small>
+																<span></span>
+																</label> --
+												</div>
+												
+											</div>
+											<div class="m-login__form-action">
+													<!-- <button [disabled]="loading" [ngClass]="{'m-loader m-loader--right m-loader--light': loading}" id="m_login_signin_submit" class="btn btn-focus m-btn m-btn--pill m-btn--custom m-btn--air bg-warning text-dark border border-warning">Sign In</button> --
+												</div>
+										</form>
+										<!-- Ends here --
+									</div>
+								 -->
+					<!-- Comapny Info -->
+					<!-- <div class=" card m-login__signup tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+										<div class="row m-login__head">
+												<div class="col-md-6">
+													<h3 class="m-login__title text-muted font-weight-bold m--align-left pl-8 pt-8">REGISTER BREWERY</h3>
+												</div>
+												<div class="col-md-6">
+													<div class="col m--align-right for_pswrd">
+														<p class="text-dark ">Company Info</p>
+													</div>
+												</div>
+											</div>
+											
+											<form (ngSubmit)="f.form.valid && signin()" #f="ngForm" class="m-login__form m-form" action=""><ng-template #alertSignin></ng-template>
+												<div class="row">
+													<div class="col-md-2 pt-2"> 
+														<label for="email" class="form-padding"><small>Company #</small> </label>
+													</div>
+													<div class="col-md-4">
+														<input class="form-control m-input" type="text" placeholder="Company" name="company" [(ngModel)]="model.email" #email="ngModel" autocomplete="off">
+													</div>
+													<div class="col-md-2 pt-2">
+														<label for="email" class="form-padding"><small>VAT #</small></label>
+													</div>
+													<div class="col-md-4">
+														<input class="form-control m-input" type="text" placeholder="VAT" name="vat" [(ngModel)]="model.email" #email="ngModel" autocomplete="off">
+													</div>
+													
+													
+												</div>
+												<br>
+												<div class="row">
+														<div class="col-md-2 pt-2 "><label for="email" class="form-padding"><small>Address</small></label></div>
+														<div class="col-md-10"><input class="form-control address m-input" type="text" placeholder="Address" name="address" [(ngModel)]="model.email" #email="ngModel" autocomplete="off"></div>
+													</div>
+													<br>
+												<div class="row">
+													<div class="col-md-2 pt-2">
+													<label for="postcode" class="form-padding"><small>Postcode</small></label>
+													</div>
+													<div class="col-md-4">
+													<input class="form-control m-input m-login__form-input--last" type="password" placeholder="postcode" name="postcode" [(ngModel)]="model.password" #password="ngModel">
+													</div>
+													<div class="col-md-2 pt-2">
+													<label for="city" class="form-padding"><small>City</small></label>
+													</div>
+													<div class="col-md-4">
+															<input class="form-control m-input m-login__form-input--last" type="password" placeholder="city" name="city" [(ngModel)]="model.password" #password="ngModel">
+													</div>
+											</div>
+												
+												<div class="row m-login__form-sub">
+													<div class="col m--align-left">
+															<button [disabled]="loading" [ngClass]="{'m-loader m-loader--right m-loader--light': loading}" id="m_login_signin_submit" class="btn btn-focus m-btn m-btn--custom m-btn--air bg-warning text-dark border border-warning">Register</button><label class="m-checkbox m-checkbox--focus">
+																	<button [disabled]="loading"  id="m_login_forget_password_cancel" class="btn m-btn m-btn--custom text-light border border-light">Cancel</button>
+																
+																	</label>
+														
+													</div>
+													
+												</div>
+												<div class="m-login__form-action">
+												
+													</div>
+											</form>
+										</div> -->
+					<!-- Ends here -->
+
+					<!-- Additional Info -->
+					<!-- <div class=" card m-login__signup tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-profile-tab">
+												<div class="row m-login__head">
+														<div class="col-md-6">
+															<h3 class="m-login__title text-muted font-weight-bold m--align-left pl-8 pt-8">REGISTER BREWERY</h3>
+														</div>
+														<div class="col-md-6">
+															<div class="col m--align-right for_pswrd">
+																<p class="text-dark ">Additonal Info</p>
+															</div>
+														</div>
+													</div>
+													
+													<form (ngSubmit)="f.form.valid && signin()" #f="ngForm" class="m-login__form m-form" action=""><ng-template #alertSignin></ng-template>
+													   <!-- <div>
+																<label for="email" class="form-padding">Tell us a little about your brewery</label>
+															
+	
+														
+																<textarea type="text"></textarea>
+															
+															</div> --
+															<div class="form-group">
+																	<label for="comment"  class="form-padding">Tell us a little about your brewery:</label>
+																	<textarea class="form-control pl-2 ml-2" rows="5" id="comment" name="text"></textarea>
+															</div>
+														
+														<div class="row m-login__form-sub">
+															<div class="col m--align-left">
+																	<button [disabled]="loading" [ngClass]="{'m-loader m-loader--right m-loader--light': loading}" id="m_login_signin_submit" class="btn btn-focus m-btn m-btn--custom m-btn--air bg-warning text-dark border border-warning">Register</button><label class="m-checkbox m-checkbox--focus">
+																			<button [disabled]="loading"  id="m_login_forget_password_cancel" class="btn m-btn m-btn--custom text-light border border-light">Cancel</button>
+																		
+																			</label>
+																
+															</div>
+															
+														</div>
+														<div class="m-login__form-action">
+														
+															</div>
+													</form>
+												</div> -->
+					<!-- Ends here -->
+
+
+					<!-- </div> -->
+
+
+					<!-- <div class="card m-login__forget-password">
+									<div class="row m-login__head">
+										<div class="col-md-6">
+											<h3 class="m-login__title text-muted font-weight-bold m--align-left pl-8 pt-8">Forgotten Password ?</h3>
+										</div>
+										<div class="col-md-6">
+											<div class="col m--align-right for_pswrd">
+												<a href="javascript:;" id="m_login_forget_password" class="text-dark ">Remembered Password ?</a>
+											</div>
+										</div>
+									</div>
+									
+									<form (ngSubmit)="f.form.valid && signin()" #f="ngForm" class="m-login__form m-form" action=""><ng-template #alertSignin></ng-template>
+										<div class="row">
+											<div class="col-md-3 pt-2 pl-4"><label for="email" class="form-padding">Email</label></div>
+											<div class="col-md-9"><input class="form-control m-input" type="text" placeholder="Email" name="email" [(ngModel)]="model.email" #email="ngModel" autocomplete="off"></div>
+										</div>
+										<br>
+										
+										
+										<div class="row m-login__form-sub">
+											<div class="col m--align-left">
+													<button [disabled]="loading" [ngClass]="{'m-loader m-loader--right m-loader--light': loading}" id="m_login_signin_submit" class="btn btn-focus m-btn m-btn--custom m-btn--air bg-warning text-dark border border-warning">Reset</button>
+													<label class="m-checkbox m-checkbox--focus">
+															<button [disabled]="loading"  id="m_login_forget_password_cancel" class="btn m-btn m-btn--custom text-light border border-light">Cancel</button>
+														
+															</label>
+											</div>
+										
+										</div>
+										<div class="m-login__form-action">
+										
+											</div>
+									</form>
+									
+								</div> -->
+					<!-- <p class="p_tag m-login__forget-password">A password reset email will be emailed to you.
+										Please follow the instructions in the email.</p> -->
+				</div>
+
+			</div>
+			<!-- <div class="m-stack__item m-stack__item--center">  
+						
+						<div class="m-login__account m-login__signin">
+							<span class="m-login__account-msg">
+							Don't have an account yet ?
+							</span>&nbsp;&nbsp;
+							<a href="javascript:;" id="m_login_signup" class="m-link m-link--focus m-login__account-link text-warning">Sign Up</a>
+						</div>
+					
+					</div> -->
+		</div>
+	</div>
+	<div class="m-grid__item m-grid__item--fluid m-grid m-grid--center  m-grid-item--center">
+
+	</div>
+</div>

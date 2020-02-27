@@ -1,0 +1,66 @@
+<!-- BEGIN: Subheader -->
+<div class="m-subheader" appunwraptag="">
+  <div class="d-flex align-items-center">
+    <div class="mr-auto">
+      <h5 class="m-subheader__title m-subheader__title--separator">Home Third Section</h5>
+    </div>
+  </div>
+</div>
+
+<!-- END: Subheader -->
+<div class="m-content">
+  <div class="m-portlet m-portlet--mobile">
+    <div class="m-portlet__head">
+      <div class="m-portlet__head-caption">
+        <div class="m-portlet__head-title">
+          <h5 class="m-portlet__head-text">Manage Home Third Section
+              <a [routerLink]="['/brewery/add-home-third-section/']" class="btn btn-primary btn-sm">Add Home Third Section</a>
+          </h5>
+        </div>
+      </div>
+    </div>
+
+    <div class="m-portlet__body">
+      <ng-template #alertProduct></ng-template>
+      <!--begin: Datatable -->
+      <table class="">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Short Title</th>
+            <th>Frist Image</th>
+            <th>Second Image</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let homethirdsection of homethirdsectionData;">
+            <td>
+              {{homethirdsection.title}}
+            </td>
+            <td>
+              {{homethirdsection.short_title}}
+            </td>
+            <td>
+              <img width="40px" height="80px" [src]="'http://api.fftb.co.uk/image/homecms/'+homethirdsection?.id"
+                [alt]="homethirdsection.small_image" class="product-img mr-3">
+            </td>
+            <td>
+              <img width="80px" height="80px" [src]="'http://api.fftb.co.uk/image/homecms2/'+homethirdsection?.id"
+                [alt]="homethirdsection.large_image" class="product-img mr-3">
+            </td>
+            <td>
+              <a [routerLink]="['/brewery/edit-home-third-section/',(homethirdsection?.id)]" class="btn btn-primary btn-sm">Update</a>
+              <a (click)="deleteHomeThirdSectionById(homethirdsection?.id)" class="btn btn-primary btn-sm">Delete</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <!-- END EXAMPLE TABLE PORTLET-->
+
+  <!--Pagination -->
+  <app-pagination *ngIf="totalItems" [pagination_limit]="pagination_limit" [totalItems]="totalItems"
+    [currentPage]="currentPage" (childEvent)="listProducts ($event)"></app-pagination>
+</div>

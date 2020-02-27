@@ -1,0 +1,46 @@
+<!-- BEGIN: Subheader -->
+<div class="m-subheader" appunwraptag="">
+		<div class="d-flex align-items-center">
+			<div class="mr-auto">
+				<h3 class="m-subheader__title m-subheader__title--separator">PAYMENT</h3>		
+			</div>
+		</div>
+	</div>
+	<!-- END: Subheader -->
+	<div class="m-content">
+		<div class="m-portlet m-portlet--full-height">
+			<div class="m-portlet__head">
+				<div class="m-portlet__head-caption">
+					<div class="m-portlet__head-title">
+						<h3 class="m-portlet__head-text"> CHANGE PAYMENT INFO</h3> </div>
+				</div>
+				<div class="m-portlet__head-tools">
+					<ul class="nav nav-pills nav-pills--brand m-nav-pills--align-right m-nav-pills--btn-pill m-nav-pills--btn-sm" role="tablist">
+						<small><button pButton type="button" routerLink="/profile" class="ui-button-secondary btn btn-light border border-dark">Return To Edit Profile</button> </small>
+					</ul>
+				</div>
+			</div>
+			<div class="m-portlet__body">
+				<P class="font-weight-bold">To change your payment information, enter your new card number below.</P>
+				<div class="m-section__sub font-weight-bold pt-4">Card Number: </div>
+						<input class="cardnumber input_type" [value]="userData?.profile?.card?.maskedNumber || null" placeholder="**** ***** **** 4512">	<!-- <p-chips [(ngModel)]="chipValues3" type="password" placeholder="**** ***** **** 4512">
+								
+							</p-chips> -->
+				<div class="m-portlet__head-title">
+					<h6 class="font-weight-bold  pt-4 mt-4">Billing Address</h6>
+					<div class="row  pt-2">
+						<div class="col-md-2">
+							<p class="font-weight-normal my-0">{{ userData?.profile?.address?.premisis }}</p>
+							<p class="font-weight-normal my-0">{{ userData?.profile?.address?.postCode }}</p>
+							<p class="font-weight-normal my-0">{{ userData?.profile?.address?.city }}</p>
+							 
+						</div>
+						<div class="col-md-10 align-left pt-2">
+							<button pButton routerLink="/orders" type="button" class="ui-button-warning btn btn-warning border">View Order</button>
+						</div>
+					</div>
+				</div>			
+
+			</div>
+		</div>
+	</div>

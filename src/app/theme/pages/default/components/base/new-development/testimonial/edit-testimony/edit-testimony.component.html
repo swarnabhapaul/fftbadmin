@@ -1,0 +1,76 @@
+<div class="m-content">
+	<div class="row">
+		<div class="col-xl-12">
+			<!--begin::Portlet-->
+			<div class="m-portlet">
+				<div class="m-portlet__head">
+					<div class="m-portlet__head-caption">
+						<div class="m-portlet__head-title">
+							<h3 class="m-portlet__head-text">Edit Our team</h3>
+						</div>
+					</div>
+				</div>
+				<!-- <form class="m-login__form m-form" [formGroup]="testimonialForm" (ngSubmit)="onSubmit()" method="post"> -->
+
+				<form (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" class="m-login__form m-form"  method="post">	
+
+					<div class="m-portlet__body">
+
+						<div class="m-section__sub font-weight-bold pt-4">Organisation Name: <span class="text-danger">*</span></div>
+						<input 
+						type="text" 
+						class="input_type" 
+						required 
+						name="organisation_name"
+						[(ngModel)]="model.organisation_name" 
+						#organisation_name="ngModel">
+
+						<div class="m-section__sub font-weight-bold pt-4">Author: <span class="text-danger">*</span></div>
+						<input 
+						type="text" 
+						class="input_type" 
+						required 
+						name="author"
+						[(ngModel)]="model.author" 
+                        #author="ngModel">
+                        
+                        <div class="m-section__sub font-weight-bold pt-4">Role: <span class="text-danger">*</span></div>
+						<input 
+						type="text" 
+						class="input_type" 
+						required 
+						name="role"
+						[(ngModel)]="model.role" 
+						#role="ngModel">
+
+						<div class="m-section__sub font-weight-bold pt-4">Comment: </div>
+						<textarea 
+						id="my-summernote" 
+						name="comment"
+						[(ngModel)]="model.comment"
+						#comment="ngModel"
+						placeholder="Compose an epic..."
+						></textarea>
+
+					</div>
+					<div class="m-portlet__body  border border-top-2">
+						<div class="m-section__content">
+							<button type="submit" class="btn ml-4 btn-light border">Save</button>
+							<!-- [disabled]="!testimonialForm.valid" -->
+							<button pButton type="button" class="btn ml-4 btn-light border">Cancel</button>
+						</div>
+					</div>
+				</form>
+			</div>
+			<!--end::Portlet-->
+
+			<div class="alert alert-{{flag}}" role="alert" *ngIf="message">
+				{{message}}
+			</div>
+		</div>
+
+
+
+
+	</div>
+</div>

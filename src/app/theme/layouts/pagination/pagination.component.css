@@ -1,0 +1,22 @@
+.page-link {
+    color: #D7D8DD;
+    border:none;
+    border-radius: 50%;
+    padding: .5rem 0.9rem;
+    
+}
+
+.page-item:first-child .page-link {
+    border-top-left-radius: 50%;
+    border-bottom-left-radius: 50%;
+}
+
+.page-item:last-child .page-link {
+    border-top-right-radius: 50%;
+    border-bottom-right-radius: 50%;
+}
+
+.bg-pagination-select {
+    background-color: #ffd305 !important;
+    cursor: not-allowed !important;
+}

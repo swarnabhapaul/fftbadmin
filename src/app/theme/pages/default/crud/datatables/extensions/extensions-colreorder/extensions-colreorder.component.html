@@ -1,0 +1,176 @@
+<!-- BEGIN: Subheader -->
+<table class="site_row" *ngIf="!breweryDetail?.profile?.status">
+	<thead>
+		<tr>
+			<th class="site_unpub">Your Site is Unpublished!</th>
+			<th>Publish your site so that customer can view your store</th>
+			<th><button class="pub_btn">publish</button></th>
+		</tr>
+	</thead>
+</table>
+
+<div class="m-subheader" appunwraptag="">		
+	<div class="d-flex align-items-center">		
+		<div class="mr-auto">	
+			<h3 class="m-subheader__title m-subheader__title--separator font-weight-bold">STORE INFO</h3>
+		</div>
+	</div>
+</div>
+
+
+<!-- END: Subheader -->
+<div class="m-content">
+	<div class="m-portlet m-portlet--full-height">
+		<div class="m-portlet__head">
+			<div class="m-portlet__head-caption">
+				<div class="m-portlet__head-title">
+					<h3 class="m-portlet__head-text font-weight-bold">EDIT STORE INFO xxx</h3> 
+				</div>
+			</div>				
+		</div>
+		<div class="m-portlet__body">		
+			<p class="text-muted font-weight-normal">STORE</p>
+			<!-- form to update brewery/store information -->
+			<form class="m-profile__form m-form" action="" (ngSubmit)="f.form.valid && submitBrewery()" #f="ngForm">
+				<ng-template #alertBrewery></ng-template>
+
+				<!-- field for brewery name -->
+				<div class="m-section__sub font-weight-bold pt-4">Brewery Name: <span class="text-danger">*</span></div>
+				<input class="bname input_type" placeholder="Brewery Name" maxlength="255" autocomplete="off" name="name" [(ngModel)]="model.name" #name="ngModel" />
+
+					<!-- brewery address -->
+					<div class="m-portlet__head-title">
+					<h6 class="font-weight-bold  pt-4 mt-4">Address</h6>
+					<label class="m-checkbox m-checkbox--focus web_chk">
+						<!-- ask to display address -->
+					<input type="checkbox" name="isAddressVisible" [(ngModel)]="model.isAddressVisible" #isAddressVisible="ngModel" [checked]="breweryDetail?.profile?.isAddressVisible">Show Address On Website
+					<span></span>
+					</label>
+
+					<!-- display brewery address -->
+					<div class="row  pt-2">
+						<div class="col-md-2">
+							<p class="font-weight-normal my-0">{{ breweryDetail?.address?.premisis }}</p>
+							<p class="font-weight-normal my-0">{{ breweryDetail?.address?.postCode }}</p>
+							<p class="font-weight-normal my-0">{{ breweryDetail?.address?.city }}</p>
+						</div>
+						<!-- change brewery address -->
+						<div class="col-md-10 align-left pt-2">
+							<button pButton type="button" class="ui-button-warning btn btn-warning border">Change</button> 
+						</div>
+					</div>
+				</div>
+
+				<!-- website url for brewery -->
+				<div class="m-section__sub font-weight-bold pt-4">URL: <span class="text-danger">*</span></div>
+
+				<div class="input-group mb-2">
+					<input class="input_type" placeholder="Brewery URL" maxlength="50" autocomplete="off" name="subdomain" [(ngModel)]="model.subdomain" #subdomain="ngModel" />
+					<div class="input-group-append">
+						<div class="input-group-text">.fftb.co.uk</div>
+					</div>
+				</div>
+				
+				<button pButton type="button" class="ui-button-warning btn border btn_view ml-4">View Live</button>
+				<p class="font-weight-normal my-0 text-warning"><small>Configure DNS settings</small></p>
+
+				<!-- update brewery logo -->
+				<div class="m-portlet__head-title">
+						<ng-template #alertImage></ng-template>
+					<h6 class="font-weight-bold  pt-4 mt-4">Brewery Logo</h6>
+					<div class="row  pt-2">
+						<div class="col-md-2">
+							<img class="img_src" [src]="breweryLogo">
+						</div>
+						<div class="col-md-10 align-left pt-2">
+							<div class="media-body">
+								<div class="text-capitalize mt-4">Upload New Logo</div>
+								<label class="btn-bs-file btn btn-warning mt-2">
+									Upload
+									<input type="file" (change)="uploadImg ($event)"/>
+								</label>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<p class="text-muted pt-4 font-weight-normal">COMPANY</p>						
+				<div class="m-section__sub font-weight-bold pt-4">VAT #: <span class="text-danger">*</span></div>
+				<input class="vat input_type" placeholder="VAT"  maxlength="255" autocomplete="off" name="vat" [(ngModel)]="model.vat" #vat="ngModel" />
+
+				<div class="m-section__sub font-weight-bold pt-4">Company #: <span class="text-danger">*</span></div>
+				<input class="compny input_type" placeholder="Company" maxlength="255" autocomplete="off" name="company" [(ngModel)]="model.company" #company="ngModel" />
+
+				<p class="text-muted pt-4 font-weight-normal">SOCIAL</p>	
+
+				<div class="m-section__sub font-weight-bold pt-4">Facebook: </div>
+				<input class="fb input_type" type="text" placeholder="Facebook URL" maxlength="255" autocomplete="off" name="group[facebook]" [(ngModel)]="model.group.facebook" #facebook="ngModel" />
+
+				<div class="m-section__sub font-weight-bold pt-4">Twitter: </div>
+				<input class="twet input_type" type="text" placeholder="Twitter URL"  maxlength="255" autocomplete="off" name="group[twitter]" [(ngModel)]="model.group.twitter" #twitter="ngModel" />
+
+				<div class="m-section__sub font-weight-bold pt-4">Instagram: </div>
+				<input class="inst input_type" type="text" placeholder="Instagram" maxlength="255" autocomplete="off" name="group[instagram]" [(ngModel)]="model.group.instagram" #instagram="ngModel" />
+
+				<p class="text-muted pt-4 font-weight-normal">CONTACT</p>	
+
+				<div class="m-section__sub font-weight-bold pt-4">Support Email: <span class="text-danger">*</span></div>
+				<input class="input_type" placeholder="Support Email" maxlength="255" autocomplete="off" name="supportEmail" [(ngModel)]="model.supportEmail" #supportEmail="ngModel" />
+
+				<div class="m-section__sub font-weight-bold pt-4">Support Number:</div>
+				<input class="input_type" placeholder="Support Number" maxlength="15" autocomplete="off" name="supportPhone" [(ngModel)]="model.supportPhone" #supportPhone="ngModel" />
+
+				<!-- submit button to update brewery -->
+				<div class="m-portlet__body  border border-top-2"> 
+					<div class="m-portlet__head-caption">
+						<div class="m-portlet__head-title">
+							<h6 class="font-weight-light"><span class="text-danger">*</span>indicates required</h6>
+						</div>
+					</div>
+					<div class="m-section__content"> 
+						<button pButton id="btn_submit_brewery_update" type="button" class="ui-button-warning btn btn-warning border">Save</button>
+						<button pButton type="button" class="btn ml-4">Cancel</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+	
+<!--Store Config Code  -->
+<div class="m-content">
+	<div class="m-portlet m-portlet--full-height">
+		<div class="m-portlet__head">
+			<div class="m-portlet__head-caption">
+				<div class="m-portlet__head-title">
+					<h3 class="m-portlet__head-text font-weight-bold">STORE CONFIG</h3> 
+				</div>
+			</div>
+		</div>
+		<form class="m-profile__form m-form" action="" (ngSubmit)="f.form.valid && submitBrewery()" #f="ngForm">
+			<ng-template #alertBreweryAmt></ng-template>
+
+			<div class="m-portlet__body">
+				<p class="text-muted">SHIPPING</p>		
+				<div class="m-section__sub font-weight-bold pt-4">
+					Enter Standard Shipping Amount: 
+					<span class="text-danger">*</span>
+				</div>
+				<input class="input_type" placeholder="£3.50" maxlength="10" autocomplete="off" name="standardShippingAmount" [(ngModel)]="shippingModel.standardShippingAmount" #standardShippingAmount="ngModel" />
+			</div>
+			<div class="m-portlet__body  border border-top-2"> 
+				<div class="m-portlet__head-caption">
+					<div class="m-portlet__head-title">
+						<h6 class="font-weight-light"><span class="text-danger">*</span>indicates required</h6>
+					</div>
+				</div>
+				<div class="m-section__content"> 
+					<button pButton type="button" id="m_brewery_shipping_amt_submit" class="ui-button-warning btn btn-warning border">Save</button>
+					<button pButton type="button" class="btn ml-4">Cancel</button>
+				</div>
+			</div>
+		</form>		
+	</div>
+</div>
+				
+				

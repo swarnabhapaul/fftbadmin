@@ -1,0 +1,119 @@
+<!-- BEGIN: Subheader -->
+<div class="m-subheader" appunwraptag="">
+	<table>
+		<tbody>
+			<tr>
+				<td><h3 class="m-subheader__title m-subheader__title--separator text-uppercase">ORDER #{{ displayOrderUUID (orderDetail?.orderUUID) }}</h3></td>
+				<td>
+					<button pButton type="button" class="btn btn-warning float-right ml-4" *ngIf="displaytn ()" (click)="fullfillOrder(orderDetail?.orderUUID)">Fulfill Order</button>
+					<button pButton type="button" class="btn border btn-light float-right">Print</button>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+
+</div>
+
+<!-- END: Subheader -->
+<div class="m-content">
+	<ng-template #alertOrderDetail></ng-template>
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="m-portlet">
+				<div class="m-portlet__body m-portlet__body--no-padding">
+					<div class="m-invoice-2">
+						<div class="m-invoice__wrapper">
+							<div class="m-invoice__head" style="background-image: url(./assets/app/media/img/logos/bg-6.jpg);">
+								<div class="m-invoice__container m-invoice__container--centered">
+									<div class="m-invoice__logo">
+										<!-- <a href="#"> -->
+										<h1>INVOICE</h1> 
+										<!-- </a> -->
+										<a href="#"> 
+											<img style="width:10rem;" [src]="orderDetail?.brewery?.logo" [alt]="orderDetail?.brewery?.name" /> 
+										</a>
+									</div> 
+									<span class="m-invoice__desc">
+										<span>{{ orderDetail?.brewery?.address?.premisis }}</span> 
+										<span>{{ orderDetail?.brewery?.address?.city }} {{ orderDetail?.brewery?.address?.postCode }}</span> 
+									</span>
+									<div class="m-invoice__items">
+										<div class="m-invoice__item">
+											<span class="m-invoice__subtitle">DATE</span>
+											<span class="m-invoice__text">{{ orderDetail?.created_at * 1000 | date: 'MMM d, y' }}</span> 
+										</div>
+										<div class="m-invoice__item">
+											<span class="m-invoice__subtitle">INVOICE NO.</span>
+											<span class="m-invoice__text text-uppercase">{{ orderDetail?.payment?.transaction?.id }}</span> 
+										</div>
+										<div class="m-invoice__item">
+											<span class="m-invoice__subtitle">INVOICE TO.</span>
+											<span class="m-invoice__text">
+												{{ billingAddress?.address?.premisis }} 
+												<br/>
+												{{ billingAddress?.address?.city }} {{ billingAddress?.address?.postCode }}
+											</span>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="m-invoice__body m-invoice__body--centered">
+								<div class="table-responsive">
+									<table class="table">
+										<thead>
+											<tr>
+												<th>PRODUCT</th>
+												<th>PRICE</th>
+												<th>QUANTITY</th>
+												<th>TOTAL</th>
+											</tr>
+										</thead>										
+									</table>
+									<div class="border_line invoice_border_line">
+										<div class="pad_top">
+											<img class="img_logoo" [src]="orderDetail?.brewery?.logo" [alt]="orderDetail?.brewery?.name"/>
+											<p class="name_mile">{{ orderDetail?.brewery?.name }}</p>
+										</div>
+										<table class="table_inv">
+											<tbody>
+												<tr *ngFor="let item of orderDetail?.items">
+													<td class="img_td">
+														<img class="img_logoo mr-2" [src]="item?.product?.picture" [alt]="item?.product?.name" />
+														<p class="invoice_list">{{ item?.product?.name }}</p>
+													</td>
+													<td class="td_price">{{ item?.price | currency:'GBP' }}</td>
+													<td>{{ item?.quantity }}</td>
+													<td>{{ (item?.price * item?.quantity) | currency:'GBP' }}</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+							<div class="m-invoice__footer">
+								<div class="m-invoice__table  m-invoice__table--centered table-responsive">
+									<table class="table">
+										<thead>
+											<tr>												
+												<th>CARD NO.</th>
+												<th>SHIPPING</th>
+												<th>TOTAL AMOUNT</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>												
+												<td>{{ orderDetail?.payment?.paymentCard?.last4 }}</td>
+												<td>{{ orderDetail?.shippingCharge | currency:'GBP' }}</td>
+												<td class="m--font-warning">{{ calculateTotalOrderPrice (orderDetail?.shippingCharge, orderDetail?.items) | currency:'GBP' }}</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

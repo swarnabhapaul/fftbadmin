@@ -1,0 +1,87 @@
+<div class="m-content">
+	<div class="row">
+		<div class="col-xl-12">
+			<!--begin::Portlet-->
+			<div class="m-portlet">
+				<div class="m-portlet__head">
+					<div class="m-portlet__head-caption">
+						<div class="m-portlet__head-title">
+							<h3 class="m-portlet__head-text">Edit Our team</h3>
+						</div>
+					</div>
+				</div>
+				<!-- <form class="m-login__form m-form" [formGroup]="ourteamForm" (ngSubmit)="onSubmit()" method="post"> -->
+
+				<form (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" class="m-login__form m-form"  method="post">	
+
+					<div class="m-portlet__body">
+
+						<div class="m-section__sub font-weight-bold pt-4">Team Name: <span class="text-danger">*</span></div>
+						<input 
+						type="text" 
+						class="input_type" 
+						required 
+						name="emp_name"
+						[(ngModel)]="model.emp_name" 
+						#emp_name="ngModel">
+
+						<div class="m-section__sub font-weight-bold pt-4">Team Position: <span class="text-danger">*</span></div>
+						<input 
+						type="text" 
+						class="input_type" 
+						required 
+						name="emp_position"
+						[(ngModel)]="model.emp_position" 
+						#emp_position="ngModel">
+
+						<!-- upload image -->
+						<ng-template #alertImage></ng-template>
+						<div class="m-portlet__head-title">
+							<h6 class="font-weight-bold  pt-4 mt-4">Team Image</h6>
+							<div class="row  pt-2">
+								<div class="col-md-2" *ngIf="empLogo">
+									<img [src]="empLogo" height="80px" width="80px">
+								</div>
+								<div class="col-md-10 align-left pt-2">
+									<div class="media-body margin_image">
+										<div class="text-capitalize mt-4">Upload New Image</div>
+										<label class="btn-bs-file btn btn-warning mt-2">
+											Upload
+											<input type="file" (change)="uploadImg ($event)" />
+										</label>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="m-section__sub font-weight-bold pt-4">Team Content: </div>
+						<textarea 
+						id="my-summernote" 
+						name="emp_content"
+						[(ngModel)]="model.emp_content"
+						#emp_content="ngModel"
+						placeholder="Compose an epic..."
+						></textarea>
+
+					</div>
+					<div class="m-portlet__body  border border-top-2">
+						<div class="m-section__content">
+							<button type="submit" class="btn ml-4 btn-light border">Save</button>
+							<!-- [disabled]="!ourteamForm.valid" -->
+							<button pButton type="button" class="btn ml-4 btn-light border">Cancel</button>
+						</div>
+					</div>
+				</form>
+			</div>
+			<!--end::Portlet-->
+
+			<div class="alert alert-{{flag}}" role="alert" *ngIf="message">
+				{{message}}
+			</div>
+		</div>
+
+
+
+
+	</div>
+</div>

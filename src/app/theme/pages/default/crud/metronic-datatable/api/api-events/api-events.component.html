@@ -1,0 +1,47 @@
+<!-- BEGIN: Subheader -->
+<div class="m-subheader" appunwraptag="">
+	<div class="d-flex align-items-center">
+		<div class="mr-auto">
+			<h3 class="m-subheader__title m-subheader__title--separator">PAYMENTS</h3>		
+		</div>			
+	</div>
+</div>
+	
+<!-- END: Subheader -->
+<div class="m-content">		
+	<div class="m-portlet m-portlet--mobile">
+		<div class="m-portlet__head payment_txt">
+			<div class="m-portlet__head-caption">
+				<div class="">
+					<h6 class="m-portlet__head-text">Payments</h6> 
+					<small class="text-muted">Fees paid by FFTB to Mile End Brewery</small>
+				</div>
+			</div>
+		</div>		
+		<div class="m-portlet__body">
+			<table class="">
+				<thead>
+					<tr>
+						<th>Reference #</th>
+						<th>Date Paid</th>
+						<th>Fees Paid</th>
+						<th>Total</th>								
+					</tr>
+				</thead>
+				<tbody>
+					<tr *ngFor="let payment of breweryPayments">
+						<td class="text-uppercase">
+							<a class="text-muted" routerLink="/orders/{{ payment?.transaction?.orderId }}">{{ payment?.transaction?.id }}</a>
+						</td>
+						<td>{{ payment?.created_at * 1000 | date:'d/M/y' }}</td>
+						<td>{{ payment?.commission | currency:'GBP' }}</td>
+						<td>{{ payment?.transaction?.amount | currency:'GBP' }}</td>
+					</tr>
+				</tbody>					
+			</table>
+		</div>
+	</div>
+
+	<!--Pagination -->
+	<app-pagination *ngIf="totalItems" [pagination_limit]="pagination_limit" [totalItems]="totalItems" [currentPage]="currentPage" (childEvent)="getBreweryPayments ($event)"></app-pagination>
+</div>

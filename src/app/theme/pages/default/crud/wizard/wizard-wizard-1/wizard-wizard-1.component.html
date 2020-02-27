@@ -1,0 +1,168 @@
+<!-- BEGIN: Subheader -->
+<div class="m-subheader" appunwraptag="">
+	<div class="d-flex align-items-center">
+		<div class="mr-auto">
+			<h3 class="m-subheader__title m-subheader__title--separator">ACCOUNT</h3>
+		</div>
+	</div>
+</div>
+
+<!-- END: Subheader -->
+<div class="m-content">
+	<div class="m-portlet m-portlet--full-height">
+		<form (ngSubmit)="f.form.valid && submitProfileUpdate()" #f="ngForm" class="m-profile__form m-form" action="">
+			<ng-template #alertUpdateProfile></ng-template>
+			<div class="m-portlet__head">
+				<div class="m-portlet__head-caption">
+					<div class="m-portlet__head-title">
+						<h3 class="m-portlet__head-text">EDIT PROFILE</h3> 
+					</div>
+				</div>				
+			</div>
+			<div class="m-portlet__body">			
+				<div class="m-section__sub font-weight-bold pt-4">First Name: </div>
+				<input class="fname input_type" name="firstName" [(ngModel)]="model.firstName" #firstName="ngModel" autocomplete="off" maxlength="100" placeholder="First Name" />
+				
+				<div class="m-section__sub font-weight-bold pt-4">Last Name: </div>
+				<input class="lname input_type" name="lastName" [(ngModel)]="model.lastName" #lastName="ngModel" autocomplete="off" maxlength="100" placeholder="Last Name">	
+							
+				<div class="m-section__sub font-weight-bold pt-4">Email: <span class="text-danger">*</span></div>
+				<input class="email input_type " placeholder="Email" name="email" [(ngModel)]="model.email" #email="ngModel" autocomplete="off" maxlength="255" disabled/>
+				
+				<p class="text-warning font-weight-normal w-50">
+					<span *ngIf="!userData?.profile?.email_verified">
+						your email has not yet been verified! 
+						<span class="text-primary" (click)="resendVerification()">Resend Verification</span>
+					</span>
+					<span *ngIf="userData?.profile?.email_verified" class="text-success">
+						Email verified 
+					</span>
+					
+					<span class="float-right text-muted">
+						<a routerLink="/profile/edit/panel" class="text-muted">
+							<small>Change Email</small>
+						</a>
+					</span>
+				</p>
+
+				<div class="m-portlet__head-title">
+					<h6 class="font-weight-bold  pt-4 mt-4">Address</h6>
+					<div class="row  pt-2">
+						<div class="col-md-2">
+							<p class="font-weight-normal my-0">{{ searchUserAddress (userData?.address, 'shipping')?.premisis }}</p>
+							<p class="font-weight-normal my-0">{{ searchUserAddress (userData?.address, 'shipping')?.postCode }}</p>
+							<p class="font-weight-normal my-0">{{ searchUserAddress (userData?.address, 'shipping')?.city }}</p>
+						</div>
+						<div class="col-md-10 align-left pt-2">
+							<button pButton type="button" class="ui-button-warning btn btn-warning border">Change</button>
+						</div>
+					</div>
+				</div>
+				
+				<div class="m-portlet__head-title">
+					<h6 class="font-weight-bold  pt-4 mt-4">Billing Address</h6>
+					<div class="row  pt-2">
+						<div class="col-md-2">
+							<p class="font-weight-normal my-0">{{ searchUserAddress (userData?.address, 'billing')?.premisis }}</p>
+							<p class="font-weight-normal my-0">{{ searchUserAddress (userData?.address, 'billing')?.postCode }}</p>
+							<p class="font-weight-normal my-0">{{ searchUserAddress (userData?.address, 'billing')?.city }}</p>
+						</div>
+						<div class="col-md-10 align-left pt-2">
+							<button pButton type="button" class="ui-button-warning btn btn-warning border">Change</button>
+						</div>
+					</div>
+				</div>
+				<div class="m-portlet__head-title">
+					<h6 class="font-weight-bold  pt-4 mt-4">Payment:</h6>
+					<div class="row  pt-2">
+						<div class="col-md-3 pt-2">
+							<img *ngIf="userData?.profile?.card?.imageUrl" [src]="userData?.profile?.card?.imageUrl"><p class="font-weight-normal my-0 d-inline-block ml-3">{{ userData?.profile?.card?.maskedNumber }}</p>			 
+						</div>
+						<div class="col-md-7 align-left">
+							<button pButton type="button" routerLink="/profile/edit/button"  class="ui-button-warning btn btn-warning border">Change</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		
+			<div class="m-portlet__body  border border-top-2"> 
+				<div class="m-portlet__head-caption">
+					<div class="m-portlet__head-title">
+						<h6 class="font-weight-light"><span class="text-danger">*</span>indicates required</h6>
+					</div>
+				</div>
+				
+				<div class="m-section__content"> 
+					<!-- <button pButton type="button" id="m_profile_update_submit" class="ui-button-warning btn btn-warning border">Save</button> -->
+					<button [disabled]="loading" id="m_profile_update_submit" type="button" [ngClass]="{'m-loader m-loader--right m-loader--light': loading}" class="ui-button-warning btn btn-warning border">Save</button>
+					<button pButton type="button" class="btn ml-4 btn-light border">Cancel</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+
+<!-- Change password Code -->
+<div class="m-content margn_top">
+	<div class="m-portlet m-portlet--full-height">
+		<div class="m-portlet__head">
+			<div class="m-portlet__head-caption">
+				<div class="m-portlet__head-title">
+					<h3 class="m-portlet__head-text">Password</h3> 
+				</div>
+			</div>	
+		</div>
+		<div class="m-portlet__body">
+			<P class="font-weight-bold">Change your password</P>
+		</div>	
+		
+		<div class="m-portlet__body border border-top-2">		
+			<div class="m-section__content">
+				<button pButton type="button" routerLink="/profile/edit/input" class="ui-button-warning btn btn-warning border">Change Password</button>
+			</div> 
+		</div>
+	</div>
+</div>
+<!-- Ends here -->
+
+<!-- Request Data -->
+<div class="m-content margn_top">
+	<div class="m-portlet m-portlet--full-height">
+		<div class="m-portlet__head">
+			<div class="m-portlet__head-caption">
+				<div class="m-portlet__head-title">
+					<h3 class="m-portlet__head-text">Request Data</h3> 
+				</div>
+			</div>
+		</div>
+		
+		<div class="m-portlet__body">
+			<P class="font-weight-normal text-muted">Download a CSV file containing all of the personal data that we store for your profile</P>
+		</div>
+				
+		<div class="m-portlet__body border border-top-2">
+			<div class="m-section__content">
+				<button pButton type="button" class="ui-button-warning btn btn-warning border">Request</button>
+			</div> 
+		</div>				
+	</div>
+</div>
+<!-- Ends here -->
+
+<!-- Delete Account -->
+<div class="m-content margn_top">
+	<div class="m-portlet m-portlet--full-height">
+		<div class="m-portlet__head">
+			<div class="m-portlet__head-caption">
+				<div class="m-portlet__head-title">
+					<h3 class="m-portlet__head-text">Delete Account</h3> 
+				</div>
+			</div>					
+		</div>
+		
+		<div class="m-portlet__body">
+			<P class="font-weight-normal text-muted">By deleting your account all associated data held by us will be deleted and your account will be terminated. you will be terminated. you will be no longer have access to the FFTB platform. If you wish you delete your account, <a class="text-warning ml-2" routerLink="/components/timeline/timeline-2">click here</a></P>
+		</div>	
+	</div>
+</div>
+<!-- Ends here -->

@@ -1,0 +1,41 @@
+<!-- BEGIN: Subheader -->
+<div class="m-subheader" appunwraptag="">
+	<div class="d-flex align-items-center">
+		<div class="mr-auto">
+			<h3 class="m-subheader__title m-subheader__title--separator">DELETE ACCOUNT</h3>			
+		</div>
+	</div>
+</div>
+
+<!-- END: Subheader -->
+<div class="m-content">
+	<div class="m-portlet m-portlet--full-height">
+		<div class="m-portlet__head">
+			<div class="m-portlet__head-caption">
+				<div class="m-portlet__head-title">
+					<h3 class="m-portlet__head-text">CONFIRM DELETION</h3> 
+				</div>
+			</div>				
+		</div>
+		<form (ngSubmit)="f.form.valid" #f="ngForm" class="m-login__form m-form" action="">
+			<ng-template #alertBrewery></ng-template>
+
+			<div class="m-portlet__body">
+				<P class="font-weight-bold">To confirm that you want to delete your account, please enter your password below.</P>
+				<div class="m-section__sub font-weight-bold pt-4">Password: <span class="text-danger">*</span></div>
+				<input class="password input_type" type="password" maxlength="20" autocomplete="off" name="password" [(ngModel)]="model.password" #password="ngModel" />
+			</div>			
+			<div class="m-portlet__body border border-top-2">
+				<div class="m-portlet__head-caption">
+					<div class="m-portlet__head-title">
+						<h6 class="font-weight-light"><span class="text-danger">*</span>indicates required</h6>
+					</div>
+				</div>
+				<div class="m-section__content">
+					<button [disabled]="loading" id="m_delete_brewery" type="button" [ngClass]="{'m-loader m-loader--right m-loader--light': loading}" class="btn btn-focus m-btn m-btn--custom m-btn--air bg-warning text-dark border border-warning">Delete</button>
+					<button pButton type="button" class="btn ml-2">Cancel</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>

@@ -1,0 +1,65 @@
+<!-- BEGIN: Subheader -->
+<div class="m-subheader" appunwraptag="">
+    <div class="d-flex align-items-center">
+      <div class="mr-auto">
+        <h5 class="m-subheader__title m-subheader__title--separator">Our Process</h5>				
+      </div>
+    </div>
+  </div>
+  
+  <!-- END: Subheader -->
+  <div class="m-content">
+    <div class="m-portlet m-portlet--mobile">
+      <div class="m-portlet__head">
+        <div class="m-portlet__head-caption">
+          <div class="m-portlet__head-title">
+            <h5 class="m-portlet__head-text">Manage Our Process</h5> 
+          </div>
+        </div>			  
+      </div>
+  
+      <div class="m-portlet__body">
+        <ng-template #alertProduct></ng-template>
+        <!--begin: Datatable -->
+        <table class="">
+          <thead>
+            <tr>
+              <th>Process Name</th>
+              <th>Process Title</th>
+              <th>Image</th>
+              <th>Show on Page</th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let process of processData;">
+              <td>
+                {{process.process_name}}
+              </td>
+              <td>
+                {{process.process_title}}
+              </td>
+              <td>
+                  <img width="80px" height="80px" [src]="process?.process_image" [alt]="process.process_name" class="product-img mr-3">
+              </td>
+              <td>
+                {{process.show_on_page == '1' ? 'Show' : 'Hide'}}
+              </td>
+              <td>
+                  {{process.status == '1' ? 'Active' : 'In-active'}}
+              </td>
+              <td>
+                <a [routerLink]="['/brewery/edit-our-process/',(process?.id)]" class="btn btn-primary btn-sm">Update</a>
+                <a (click)="deleteProcess(process?.id)" class="btn btn-primary btn-sm">Delete</a>
+              </td> 
+            </tr>
+          </tbody>
+        </table>				
+      </div>
+    </div>
+    <!-- END EXAMPLE TABLE PORTLET-->
+  
+    <!--Pagination -->
+    <app-pagination *ngIf="totalItems" [pagination_limit]="pagination_limit" [totalItems]="totalItems" [currentPage]="currentPage" (childEvent)="listProducts ($event)"></app-pagination>
+  </div>

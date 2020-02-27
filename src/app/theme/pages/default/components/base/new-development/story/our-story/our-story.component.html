@@ -1,0 +1,61 @@
+<!-- BEGIN: Subheader -->
+<div class="m-subheader" appunwraptag="">
+        <div class="d-flex align-items-center">
+          <div class="mr-auto">
+            <h5 class="m-subheader__title m-subheader__title--separator">Our Story</h5>				
+          </div>
+        </div>
+      </div>
+      
+      <!-- END: Subheader -->
+      <div class="m-content">
+        <div class="m-portlet m-portlet--mobile">
+          <div class="m-portlet__head">
+            <div class="m-portlet__head-caption">
+              <div class="m-portlet__head-title">
+                <h5 class="m-portlet__head-text">Manage Our Story</h5> 
+              </div>
+            </div>			  
+          </div>
+      
+          <div class="m-portlet__body">
+            <ng-template #alertProduct></ng-template>
+            <!--begin: Datatable -->
+            <table class="">
+              <thead>
+                <tr>
+                  <th>Story Title</th>
+                  <th>Small Image</th>
+                  <th>Big Image</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let story of storyData;">
+                  <td>
+                    {{story.story_title}}
+                  </td>
+                  <td>
+                    <img width="80px" height="80px" [src]="'http://api.fftb.co.uk/image/ourstory2/'+story?.id" [alt]="story.story_title" class="product-img mr-3">
+                  </td>
+                  <td>
+                    <img width="80px" height="80px" [src]="'http://api.fftb.co.uk/image/ourstory/'+story?.id" [alt]="story.story_title" class="product-img mr-3">
+                  </td>
+                  <td>
+                      {{story.status == '1' ? 'Active' : 'In-active'}}
+                  </td>
+                  <td>
+                    <a [routerLink]="['/brewery/edit-our-story/',(story?.id)]" class="btn btn-primary btn-sm">Update</a>
+                    <a (click)="deleteStory(story?.id)" class="btn btn-primary btn-sm">Delete</a>
+                  </td> 
+                </tr>
+              </tbody>
+            </table>				
+          </div>
+        </div>
+        <!-- END EXAMPLE TABLE PORTLET-->
+      
+        <!--Pagination -->
+        <app-pagination *ngIf="totalItems" [pagination_limit]="pagination_limit" [totalItems]="totalItems" [currentPage]="currentPage" (childEvent)="listProducts ($event)"></app-pagination>
+      </div>

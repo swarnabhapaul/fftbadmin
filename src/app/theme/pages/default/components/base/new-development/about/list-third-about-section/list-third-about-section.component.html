@@ -1,0 +1,59 @@
+<!-- BEGIN: Subheader -->
+<div class="m-subheader" appunwraptag="">
+    <div class="d-flex align-items-center">
+      <div class="mr-auto">
+        <h5 class="m-subheader__title m-subheader__title--separator">Third About Section</h5>				
+      </div>
+    </div>
+  </div>
+  
+  <!-- END: Subheader -->
+  <div class="m-content">
+    <div class="m-portlet m-portlet--mobile">
+      <div class="m-portlet__head">
+        <div class="m-portlet__head-caption">
+          <div class="m-portlet__head-title">
+            <h5 class="m-portlet__head-text">Manage Third About Section</h5>
+          </div>
+        </div>	
+        <span  type="button" class="pull-right"><a class="btn btn-primary" [routerLink]="['/brewery/add-third-about-section/']" >Add</a></span>		  
+      </div>
+  
+      <div class="m-portlet__body">
+        <ng-template #alertProduct></ng-template>
+        <!--begin: Datatable -->
+        <table class="">
+          <thead>
+            <tr>
+              <th>About Icon</th>
+              <th>Count</th>
+              <th>Text</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let about of aboutData;">
+              
+              <td>
+                <img width="80px" height="80px" [src]="'http://api.fftb.co.uk/image/about/'+about?.id" [alt]="about.heading" class="product-img mr-3">
+              </td>
+              <td>
+                  {{about.count}}
+              </td>
+              <td>
+                  {{about.heading}}
+              </td>
+              <td>
+                <a [routerLink]="['/brewery/edit-third-about-section',(about?.id)]" class="btn btn-primary btn-sm">Update</a>
+                <a (click)="deleteStory(about?.id)" class="btn btn-primary btn-sm">Delete</a>
+              </td> 
+            </tr>
+          </tbody>
+        </table>				
+      </div>
+    </div>
+    <!-- END EXAMPLE TABLE PORTLET-->
+  
+    <!--Pagination -->
+    <app-pagination *ngIf="totalItems" [pagination_limit]="pagination_limit" [totalItems]="totalItems" [currentPage]="currentPage" (childEvent)="listProducts ($event)"></app-pagination>
+  </div>

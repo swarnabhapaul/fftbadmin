@@ -1,0 +1,75 @@
+<div class="m-subheader">
+		<div class="d-flex align-items-center">
+			<div class="mr-auto">
+				<h3 class="m-subheader__title m-subheader__title--separator">
+					PAYMENT
+				</h3>
+				
+			</div>
+		</div>
+</div>
+<!-- END: Subheader -->
+<div class="m-content">
+	<div class="col-lg-12">
+		<!--begin::Portlet-->
+		<div class="m-portlet">
+			<div class="m-portlet__head">
+				<div class="m-portlet__head-caption">
+					<div class="m-portlet__head-title">
+						<h3 class="m-portlet__head-text">
+							CHANGE PAYMENT INFO
+						</h3>
+					</div>
+				</div>
+			</div>
+			<div class="m-portlet__body">
+				<form (ngSubmit)="f.form.valid && submitPasswordUpdate()" #f="ngForm" class="m-profile__form m-form" action="">
+					<ng-template #alertUpdatePayment></ng-template>
+					<!--begin::Section-->
+					<div class="m-section">
+						<div class="m-section__content">
+							<div class="m-section__sub">
+								To change your payment information, enter your new card number below.
+							</div> 
+
+							<div class="m-section__sub font-weight-bold">Card Number: <span class="text-danger">*</span></div>
+							<input type="text" class="cardnumber input_type" [(ngModel)]="model.creditCard.number" name="creditCard[number]" autocomplete="off" maxlength="20" />
+							
+							<div class="m-section__sub font-weight-bold">Expiry Date: <span class="text-danger">*</span></div>
+							<input class="cvv" placeholder="Expiry date" id="m_datepicker_expiry_date" readonly maxlength="7" [(ngModel)]="model.creditCard.expirationDate" name="creditCard[expirationDate]"/>
+
+							<div class="m-section__sub font-weight-bold">CVV: <span  class="text-danger">*</span></div>
+							<input type="password" class="cvv" [(ngModel)]="model.creditCard.cvv" autocomplete="off" maxlength="4" name="creditCard[cvv]"/>
+						</div>
+						
+						<h5 class="text-muted">BILLING ADDRESS</h5>
+						<label class="m-checkbox m-checkbox--focus">
+							<input type="checkbox" name="remember">Same as payment address
+							<span></span>
+						</label>
+						<div class="m-section__sub font-weight-bold">Address: <span class="text-danger">*</span></div>
+						<input type="text" class="address input_type" [(ngModel)]="model.address.premisis" autocomplete="off" maxlength="255" name="address[premisis]" />
+
+						<div class="m-section__sub font-weight-bold">City: <span class="text-danger">*</span></div>
+						<input type="text" class="city input_type" [(ngModel)]="model.address.city" autocomplete="off" maxlength="50" name="address[city]" />
+
+						<div class="m-section__sub font-weight-bold">Postcode: <span class="text-danger">*</span></div>
+						<input type="text" class="cardnumber input_type" [(ngModel)]="model.address.postCode" autocomplete="off" maxlength="8" name="address[postCode]" />	
+					</div>					
+					<!--end::Section-->
+					
+					<div class="m-portlet__head-caption">
+						<div class="m-portlet__head-title">
+							<h6 class="font-weight-light"><span class="text-danger">*</span>indicates required</h6>
+						</div>									
+					</div>
+					<div class="m-section__content"> 
+						<button [disabled]="loading" id="m_payment_update_submit" type="button" [ngClass]="{'m-loader m-loader--right m-loader--light': loading}" class="ui-button-warning btn btn-warning border">Save</button>
+						<button type="button" class="btn ml-4  ui-button-light border btn-light">Cancel</button>
+					</div>
+				</form>
+			</div>
+		</div>				
+	</div>
+</div>
+	

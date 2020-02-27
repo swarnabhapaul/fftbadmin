@@ -1,0 +1,102 @@
+<!-- BEGIN: Subheader -->
+<div class="m-subheader" appunwraptag="">
+	<div class="row">
+		<div class="col-md-6">
+			<h3 class="m-subheader__title m-subheader__title--separator">BLOG</h3>
+		</div>
+		<div class="col-md-6">
+			<div class=" float-right">
+				<button pButton type="button" class="ui-button-warning btn btn-warning border">Preview</button>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- END: Subheader -->
+<div class="m-content">
+	<div class="row">
+		<div class="col-xl-9">
+			<!--begin::Portlet-->
+			<div class="m-portlet">
+				<div class="m-portlet__head">
+					<div class="m-portlet__head-caption">
+						<div class="m-portlet__head-title">
+							<h3 class="m-portlet__head-text">EDIT PRODUCT</h3> 
+						</div>
+					</div>
+				</div>
+				<form (ngSubmit)="f.form.valid && completeRegistration()" #f="ngForm" class="m-login__form m-form" id="complete_registration_form" action="">
+					<ng-template #alertBlog></ng-template>
+					<div class="m-portlet__body">
+						<!--begin::Section-->
+						<div class="m-section__sub font-weight-bold pt-4">Title: <span class="text-danger">*</span></div>
+						<input class="input_type" maxlength="255" placeholder="Title of the blog" name="title" [(ngModel)]="model.title" #title="ngModel" autocomplete="off"/>
+
+						<!-- upload image -->
+						<div class="m-portlet__head-title">
+							<h6 class="font-weight-bold  pt-4 mt-4">Brewery Logo</h6>
+							<div class="row  pt-2">
+								<div class="col-md-2" *ngIf="blogLogo">
+									<img [src]="blogLogo">
+								</div>
+								<div class="col-md-10 align-left pt-2">
+									<div class="media-body margin_image">
+										<div class="text-capitalize mt-4">Upload New Image</div>
+										<label class="btn-bs-file btn btn-warning mt-2">
+											Upload
+											<input type="file" (change)="uploadImg ($event)"/>
+										</label>
+									</div>										
+								</div>
+							</div>
+						</div>
+
+						<!-- user content -->
+						<div class="m-section__sub font-weight-bold pt-4">Content: </div>
+						<textarea id="my-summernote" name="content" [(ngModel)]="model.content" #content="ngModel" placeholder="Compose an epic..."></textarea>
+					</div>
+					<div class="m-portlet__body  border border-top-2"> 
+						<div class="m-portlet__head-caption">
+							<div class="m-portlet__head-title">
+								<h6 class="font-weight-light"><span class="text-danger">*</span>indicates required</h6>
+							</div>							
+						</div>
+						<div class="m-section__content"> 
+							<!-- <button pButton type="button" id="m_submit_blog" [disabled]="loading" [ngClass]="{'m-loader m-loader--right m-loader--light': loading}" class="ui-button-warning btn btn-warning border">Save</button> -->
+							<button [disabled]="loading" id="m_submit_blog" type="button" [ngClass]="{'m-loader m-loader--right m-loader--light': loading}" class="btn btn-focus m-btn m-btn--custom m-btn--air bg-warning text-dark border border-warning">Save</button>
+							<button pButton type="button" class="btn ml-4 btn-light border">Cancel</button>
+						</div>
+					</div>
+				</form>
+			</div>
+			<!--end::Portlet-->
+		</div>
+		<div class="col-xl-3">
+			<!--begin::Portlet-->
+			<div class="m-portlet" id="m_blockui_2_portlet">
+				<div class="m-portlet__head">
+					<div class="m-portlet__head-caption">
+						<div class="m-portlet__head-title">
+						<h3 class="m-portlet__head-text font-weight-bold">QUICK ACTIONS</h3> </div>
+					</div>
+				</div>
+				<div class="m-portlet__body">
+					<!--begin::Section-->
+					<div class="m-section mb-0">
+						<table>
+							<tbody>
+								<tr>
+									<td (click)="toggleStatus ()" class="text-center font-weight-normal"><img src="./assets/app/media/img/logos/pub_post.png"><br>{{ model.status ? 'draft' : 'publish' }}<br>Post</td>
+									<td *ngIf="blogId" (click)="deleteBlog (blogId)" class="text-center font-weight-normal"><img src="./assets/app/media/img/logos/delete_post.png"><br>Delete<br>Post</td>
+								</tr>
+							</tbody>
+						</table>						
+					</div>
+					<!--end::Section-->
+					<p class="text-muted font-weight-normal position-absolute">Autosaved 10:09AM</p>
+				</div>
+			</div>
+			<!--end::Portlet-->
+		</div>		
+	</div>	
+	<!--begin::Modal-->	
+</div><!-- BEGIN: Subheader -->	

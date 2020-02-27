@@ -1,0 +1,149 @@
+<div class="m-grid__item bg_img m-grid__item--fluid m-grid m-grid--ver-desktop m-grid--desktop m-grid--tablet-and-mobile m-grid--hor-tablet-and-mobile m-login m-login--1 m-login--signin" id="m_login">
+	<div class="m-grid__item m-login__aside">
+		<div class="m-stack m-stack--hor m-stack--desktop">
+			<div class="m-stack__item m-stack__item--fluid">
+	
+				<div class="m-login__wrapper">
+	
+					<div class="m-login__logo">
+						<img src="./assets/app/media/img//logos/fftb-logo.png">								
+					</div>						
+					<div class="top_link">
+						<div class="nav nav-tabs nav-fill text-uppercase" id="nav-tab" role="tablist">
+							
+							 <a class="nav-item nav-link active" href="#nav-basic-info" id="nav-basic-info-tab" data-toggle="tab"  role="tab" aria-controls="nav-basic-info" aria-selected="true">Basic Info</a>
+
+							<a class="nav-item nav-link text-uppercase" href="#nav-address" id="nav-address-tab" data-toggle="tab" role="tab" aria-controls="nav-address" aria-selected="false">Address</a>
+
+							<a class="nav-item nav-link text-uppercase" href="#nav-billing" id="nav-billing-tab" data-toggle="tab" role="tab" aria-controls="nav-billing" aria-selected="false">Billing</a>
+
+						</div>
+					</div>
+					<div id="nav-tabContent">
+						<form (ngSubmit)="f.form.valid && completeRegistration()" #f="ngForm" class="m-login__form m-form" id="complete_registration_form" action="">
+							<ng-template #alertCompleteRegistration></ng-template>
+
+							<div class="card top_link tab-pane fade show active" id="nav-basic-info" role="tabpanel" aria-labelledby="nav-basic-info-tab">
+	
+								<!-- Basic Info start -->
+								<div class="row m-login__head">
+									<div class="col-md-12">
+										<h3 class="m-login__title text-muted font-weight-bold m--align-left pl-8 pt-8">COMPLETE REGISTRATION</h3>
+									</div>										
+								</div>
+										
+								<div class="row mt-2">
+									<div class="col-md-3 pt-2 pl-4"><label for="firstName" class="form-padding">First Name</label></div>
+									<div class="col-md-9">
+										<input class="form-control m-input" maxlength="100" placeholder="first name" name="firstName" [(ngModel)]="model.firstName" #firstName="ngModel" autocomplete="off">
+									</div>
+								</div>
+											
+								<div class="row">
+									<div class="col-md-3 pt-4 pl-4 mt-2"><label for="lastName" class="form-padding">Last Name</label></div>
+									<div class="col-md-9 mt-4"><input class="form-control m-input" maxlength="100" placeholder="last name" name="lastName" [(ngModel)]="model.lastName" #lastName="ngModel" autocomplete="off"></div>
+								</div>
+												
+																					
+								<div class="row m-login__form-sub">
+									<div class="col m--align-left">
+										<button type="button" [disabled]="loading" [ngClass]="{'m-loader m-loader--right m-loader--light': loading}" id="m_complete_registration_submit_step1" class="btn btn-focus m-btn m-btn--custom m-btn--air bg-warning text-dark border border-warning">Next</button>
+										<label class="m-checkbox m-checkbox--focus">
+											<input type="checkbox" name="remember" [(ngModel)]="model.remember" #remember="ngModel"> <small>Remember me</small>
+											<span></span>
+										</label>
+									</div>
+								</div>
+								
+								<div class="m-login__form-action"></div>
+										
+								<!-- Ends here -->
+							</div>
+							<!-- Ends here -->
+									
+							<!-- Address Info -->
+							<div class="card top_link tab-pane fade" id="nav-address" role="tabpanel" aria-labelledby="nav-address-tab">
+								<div class="row m-login__head">
+									<div class="col-md-12">
+										<h3 class="m-login__title text-muted font-weight-bold m--align-left pl-8 pt-8">COMPLETE REGISTRATION</h3>
+									</div>
+								</div>
+											
+								<div class="row">
+									<div class="col-md-2 pt-2 "><label for="premisis" class="form-padding"><small>Address</small></label></div>
+									<div class="col-md-10"><input class="form-control address m-input" maxlength="255" placeholder="Premisis" name="address[premisis]" [(ngModel)]="model.address.premisis" #premisis="ngModel" autocomplete="off" /></div>
+								</div>
+													
+								<div class="row">
+									<div class="col-md-2 pt-4 mt-2">
+										<label for="postCode" class="form-padding"><small>Postcode</small></label>
+									</div>
+									<div class="col-md-4 mt-4">
+										<input class="form-control m-input m-login__form-input--last" maxlength="8" placeholder="postcode" name="address[postCode]" [(ngModel)]="model.address.postCode" #postCode="ngModel">
+									</div>
+									<div class="col-md-2 pt-4 mt-2">
+										<label for="city" class="form-padding"><small>City</small></label>
+									</div>
+									<div class="col-md-4 mt-4">
+										<input class="form-control m-input m-login__form-input--last" maxlength="100" placeholder="city" name="address[city]" [(ngModel)]="model.address.city" #city="ngModel">
+									</div>
+								</div>
+												
+								<div class="row m-login__form-sub">
+									<div class="col m--align-left">
+										<button type="button" id="m_complete_registration_submit_step2" [disabled]="loading" [ngClass]="{'m-loader m-loader--right m-loader--light': loading}" class="btn btn-focus m-btn m-btn--custom m-btn--air bg-warning text-dark border border-warning">Next</button>
+									</div>
+													
+								</div>
+								
+								<div class="m-login__form-action"></div>
+								<!-- </form> -->
+							</div>
+							<!-- Ends here -->
+	
+							<!-- Billing Info -->
+							<div class="card top_link tab-pane fade" id="nav-billing" role="tabpanel" aria-labelledby="nav-billing-tab">
+								<div class="row m-login__head">
+									<div class="col-md-12">
+										<h3 class="m-login__title text-muted font-weight-bold m--align-left pl-8 pt-8">COMPLETE REGISTERATION</h3>
+									</div>														
+								</div>
+								
+								<div class="row">
+									<div class="col-md-2 pt-2 "><label for="number" class="form-padding"><small>Card No</small></label></div>
+									<div class="col-md-10"><input class="form-control address m-input" maxlength="20" placeholder="card no" name="creditCard[number]" [(ngModel)]="model.creditCard.number" #number="ngModel" autocomplete="off" /></div>
+								</div>
+														
+								<div class="row">
+									<div class="col-md-2 pt-4 mt-2">
+										<label for="expiryDate" class="form-padding"><small>Expiry</small></label>
+									</div>
+									<div class="col-md-10  mt-4">
+										<input class="form-control m-input m-login__form-input--last" placeholder="card Expiry date" id="m_datepicker_expiry_date" readonly maxlength="7" name="creditCard[expirationDate]" [(ngModel)]="model.creditCard.expirationDate" #expiryDate="ngModel" />
+									</div>
+								</div>
+												
+								<div class="row">
+									<div class="col-md-2 pt-4 mt-2"><label for="cvv" class="form-padding"><small>CVV</small></label></div>
+									<div class="col-md-10 mt-4"><input class="form-control address m-input" maxlength="4" placeholder="CVV" name="creditCard[cvv]" [(ngModel)]="model.creditCard.cvv" #cvv="ngModel" autocomplete="off"></div>
+								</div>
+														
+								<div class="row m-login__form-sub">
+									<div class="col m--align-left">
+										<button [disabled]="loading" id="m_complete_registration_submit_step3" type="button" [ngClass]="{'m-loader m-loader--right m-loader--light': loading}" class="btn btn-focus m-btn m-btn--custom m-btn--air bg-warning text-dark border border-warning">Complete</button>
+									</div>
+								</div>
+								
+								<div class="m-login__form-action"></div>
+												
+							</div>
+							<!-- Ends here -->
+	
+						</form>												
+					</div>						
+				</div>	
+			</div>					
+		</div>
+	</div>
+	<div class="m-grid__item m-grid__item--fluid m-grid m-grid--center  m-grid-item--center" ></div>
+</div>		

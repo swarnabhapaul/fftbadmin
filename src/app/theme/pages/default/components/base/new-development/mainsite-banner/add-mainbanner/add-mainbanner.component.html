@@ -1,0 +1,90 @@
+<div class="m-content">
+	<div class="row">
+		<div class="col-xl-12">
+			<!--begin::Portlet-->
+			<div class="m-portlet">
+				<div class="m-portlet__head">
+					<div class="m-portlet__head-caption">
+						<div class="m-portlet__head-title">
+							<h3 class="m-portlet__head-text">Manage Banner</h3>
+						</div>
+					</div>
+				</div>
+				<form class="m-login__form m-form" [formGroup]="mainbannerForm" (ngSubmit)="onSubmit()" method="post">
+					<div class="m-portlet__body">
+
+						<div class="m-section__sub font-weight-bold pt-4">Banner Title: </div>
+						<input type="text" formControlName="banner_heading" class="input_type" required />
+
+						<div class="m-section__sub font-weight-bold pt-4">Banner Content: </div>
+						<textarea id="my-summernote" formControlName="banner_description"
+							placeholder="Compose an epic..."></textarea>
+
+
+						<ng-template #alertbackgroundImage></ng-template>
+						<div class="m-portlet__head-title">
+							<h6 class="font-weight-bold  pt-4 mt-4">Background Image</h6>
+							<div class="row  pt-2">
+								<div class="col-md-2" *ngIf="backgroundLogo">
+									<img [src]="backgroundLogo" height="80px" width="80px">
+								</div>
+								<div class="col-md-10 align-left pt-2">
+									<div class="media-body margin_image">
+										<div class="text-capitalize mt-4">Upload New Image</div>
+										<label class="btn-bs-file btn btn-warning mt-2">
+											Upload
+											<input type="file" (change)="uploadbackgroundImg ($event)" />
+										</label>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div style="color: crimson;">
+							<div>Banner Background Image 1300 * 500 px</div>
+						</div>
+
+
+						<ng-template #alertbesideImage></ng-template>
+						<div class="m-portlet__head-title">
+							<h6 class="font-weight-bold  pt-4 mt-4">Beside Image</h6>
+							<div class="row  pt-2">
+								<div class="col-md-2" *ngIf="besideLogo">
+									<img [src]="besideLogo" height="80px" width="40px">
+								</div>
+								<div class="col-md-10 align-left pt-2">
+									<div class="media-body margin_image">
+										<div class="text-capitalize mt-4">Upload New Image</div>
+										<label class="btn-bs-file btn btn-warning mt-2">
+											Upload
+											<input type="file" (change)="uploadbesideImg ($event)" />
+										</label>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div style="color: crimson;">
+							<div>Banner Beside Image 150 * 400 px</div>
+						</div>
+
+
+					</div>
+					<div class="m-portlet__body  border border-top-2">
+						<div class="m-section__content"><!-- -->
+							<button type="submit" [disabled]="!mainbannerForm.valid" class="btn ml-4 btn-light border">Save</button>
+							<!-- <button pButton type="button" class="btn ml-4 btn-light border">Cancel</button> -->
+						</div>
+					</div>
+				</form>
+			</div>
+			<!--end::Portlet-->
+
+			<div class="alert alert-{{flag}}" role="alert" *ngIf="message">
+				{{message}}
+			</div>
+		</div>
+
+
+
+
+	</div>
+</div>

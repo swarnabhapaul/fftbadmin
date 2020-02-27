@@ -1,0 +1,56 @@
+<!-- BEGIN: Subheader -->
+<div class="m-subheader" appunwraptag="">
+	<div class="d-flex align-items-center">
+		<div class="mr-auto">
+			<h5 class="m-subheader__title m-subheader__title--separator">What We Learned</h5>
+		</div>
+	</div>
+</div>
+
+<!-- END: Subheader -->
+<div class="m-content">
+	<div class="m-portlet m-portlet--mobile">
+		<div class="m-portlet__head">
+			<div class="m-portlet__head-caption">
+				<div class="m-portlet__head-title">
+					<h5 class="m-portlet__head-text">Manage What We Learned</h5>
+					<a [routerLink]="['/brewery/add-what-we-learned-so-far/']" class="btn btn-primary btn-sm">Add What We Learned</a>
+				</div>
+			</div>
+		</div>
+		<div class="m-portlet__body">
+			<ng-template #alertProduct></ng-template>
+			<!--begin: Datatable -->
+			<table class="">
+				<thead>
+					<tr>
+						<th>Heading</th>
+						<th>Image</th>
+						<th>Action</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr *ngFor="let whatwelearned of whatwelearnedData;">
+
+						<td>
+							{{whatwelearned.heading}}
+						</td>
+						<td>
+							<img width="80px" height="80px" [src]="'http://api.fftb.co.uk/image/whatwelearned/'+whatwelearned?.id"
+								[alt]="whatwelearned.heading" class="product-img mr-3">
+						</td>
+						<td>
+							<a [routerLink]="['/brewery/edit-what-we-learned-so-far/',(whatwelearned?.id)]" class="btn btn-primary btn-sm">Update</a>
+							<a (click)="deleteTeam(whatwelearned?.id)" class="btn btn-primary btn-sm">Delete</a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<!-- END EXAMPLE TABLE PORTLET-->
+
+	<!--Pagination -->
+	<app-pagination *ngIf="totalItems" [pagination_limit]="pagination_limit" [totalItems]="totalItems"
+		[currentPage]="currentPage" (childEvent)="listProducts ($event)"></app-pagination>
+</div>

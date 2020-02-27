@@ -1,0 +1,118 @@
+<div class="m-content">
+        <div class="row">
+            <div class="col-xl-12">
+                <!--begin::Portlet-->
+                <div class="m-portlet">
+                    <div class="m-portlet__head">
+                        <div class="m-portlet__head-caption">
+                            <div class="m-portlet__head-title">
+                                <h3 class="m-portlet__head-text">Edit Our story</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <form class="m-login__form m-form" [formGroup]="ourstoryForm" (ngSubmit)="onSubmit()" method="post"> -->
+    
+                    <form (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" class="m-login__form m-form"  method="post">	
+    
+                        <div class="m-portlet__body">
+
+    
+                            <div class="m-section__sub font-weight-bold pt-4">Story Title: <span class="text-danger">*</span></div>
+                            <input 
+                            type="text" 
+                            class="input_type" 
+                            required 
+                            name="story_title"
+                            [(ngModel)]="model.story_title" 
+                            #story_title="ngModel">
+    
+      
+    
+                            <!-- upload image -->
+                            <ng-template #alertImage2></ng-template>
+                            <div class="m-portlet__head-title">
+                                <h6 class="font-weight-bold  pt-4 mt-4">Upload Big Image</h6>
+                                <div class="row  pt-2">
+                                    <div class="col-md-2" *ngIf="_storyBig">
+                                        <img [src]="_storyBig"  height="80px" width="80px">
+                                    </div>
+                                    <div class="col-md-10 align-left pt-2">
+                                        <div class="media-body margin_image">
+                                            <div class="text-capitalize mt-4">Upload Big Image</div>
+                                            <label class="btn-bs-file btn btn-warning mt-2">
+                                                Upload
+                                                <input type="file" (change)="uploadBigImg ($event)" />
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="color: crimson;">
+                                <div>Story Big Image 385 * 385 px</div>
+                            </div>
+
+
+                            <!-- upload image -->
+                            <ng-template #alertImage></ng-template>
+                            <div class="m-portlet__head-title">
+                                    <h6 class="font-weight-bold  pt-4 mt-4">Upload Small Image</h6>
+                                    <div class="row  pt-2">
+                                        <div class="col-md-2" *ngIf="_storySmall">
+                                            <img [src]="_storySmall" height="80px" width="80px">
+                                        </div>
+                                        <div class="col-md-10 align-left pt-2">
+                                            <div class="media-body margin_image">
+                                                <div class="text-capitalize mt-4">Upload Small Image</div>
+                                                <label class="btn-bs-file btn btn-warning mt-2">
+                                                    Upload
+                                                    <input type="file" (change)="uploadSmallImg ($event)" />
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div style="color: crimson;">
+                                    <div>Story Short Image 150 * 140 px</div>
+                                </div>
+
+
+                            <div class="m-section__sub font-weight-bold pt-4">Story Sort Content: </div>
+                            <textarea 
+                            id="my-story_short_des" 
+                            name="story_short_des"
+                            [(ngModel)]="model.story_short_des"
+                            #story_short_des="ngModel"
+                            placeholder="Compose an epic..."
+                            ></textarea>
+                                
+                            <div class="m-section__sub font-weight-bold pt-4">Story Big Content: </div>
+                            <textarea 
+                            id="my-story_content" 
+                            name="story_content"
+                            [(ngModel)]="model.story_content"
+                            #story_content="ngModel"
+                            placeholder="Compose an epic..."
+                            ></textarea>
+    
+                        </div>
+                        <div class="m-portlet__body  border border-top-2">
+                            <div class="m-section__content">
+                                <button type="submit" class="btn ml-4 btn-light border">Save</button>
+                                <!-- [disabled]="!ourstoryForm.valid" -->
+                                <button pButton type="button" class="btn ml-4 btn-light border">Cancel</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!--end::Portlet-->
+    
+                <div class="alert alert-{{flag}}" role="alert" *ngIf="message">
+                    {{message}}
+                </div>
+            </div>
+    
+    
+    
+    
+        </div>
+    </div>
